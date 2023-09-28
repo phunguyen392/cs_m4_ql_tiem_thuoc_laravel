@@ -6,6 +6,8 @@ use App\Models\Product;
 use App\Models\Role;
 use App\Models\Group;
 use App\Models\GroupRole;
+use App\Models\User;
+
 
 
 
@@ -20,17 +22,18 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // \App\Models\User::factory(10)->create();
+        \App\Models\User::factory(10)->create();
 
-        // \App\Models\User::factory()->create([
-        //     'name' => 'Test User',
-        //     'email' => 'test@example.com',
-        // ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Test User',
+            'email' => 'test@example.com',
+        ]);
     $this->call(CategorySeeder::class);
     $this->call(ProductSeeder::class);
     $this->call(RoleSeeder::class);
     $this->call(GroupSeeder::class);
     $this->call(GroupRoleSeeder::class);
+    $this->call(UserSeeder::class);
 
 
     }

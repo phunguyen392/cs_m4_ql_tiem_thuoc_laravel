@@ -57,6 +57,8 @@
             </tbody>
         </table>
     </div>
+<a href="/logout">đăng xuất</a>
+
     {{$categories->links()}}
 </body>
 

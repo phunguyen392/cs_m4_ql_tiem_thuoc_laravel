@@ -31,5 +31,31 @@ class ProductSeeder extends Seeder
         $pro->status = 1;
         $pro->save();
 
+        $pro = new Product();
+        $pro->product_name = 'Cá sấu lội bùn';
+        $pro->category_id = 3;
+        $pro->quantity = 100;
+        $pro->price = 30000;
+        $pro->image = 'muop.jpg';
+        $pro->status = 1;
+        $pro->save();
+
+        $pro = new Product();
+        $pro->product_name = 'Vũ nữ chân dài';
+        $pro->category_id = 3;
+        $pro->quantity = 100;
+        $pro->price = 75000;
+        $pro->image = 'nhai.jpg';
+        $pro->status = 1;
+        $pro->save();
+
+        $pro = new Product();
+        $pro->product_name = 'Táo quân lội vạc dầu';
+        $pro->category_id = 3;
+        $pro->quantity = 100;
+        $pro->price = 150000;
+        $pro->image = 'cachep.jpg';
+        $pro->status = 1;
+        $pro->save();
     }
 }
