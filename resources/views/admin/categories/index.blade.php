@@ -44,9 +44,8 @@
                                 <a href="{{ route('categories.edit', ['category' => $cate->id]) }}" class="btn btn-primary">Edit</a>
                             </form>
 
-                            <form action="{{ route('categories.destroy', ['category' => $cate->id]) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
+                            <form action="{{ route('categories.softdeletes', $cate->id) }}" method="POST">                                @csrf
+                                @method('PUT')
                                 <button type="submit" class="btn btn-danger">Delete</button>
                             </form>
                             <a href="{{ route('categories.show', ['category' => $cate->id]) }}" class="btn btn-success">Show</a>

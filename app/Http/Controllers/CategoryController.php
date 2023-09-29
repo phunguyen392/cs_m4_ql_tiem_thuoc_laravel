@@ -69,9 +69,36 @@ class CategoryController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy($id)
     {
-        $cate = Category::destroy($id);
+        $this->authorize('forceDelete', Category::class);
+        $category = Category::onlyTrashed()->findOrFail($id);
+        $category->forceDelete();
+        return redirect()->back()->with('status', 'Xóa danh mục thành công');
+    }
+
+
+//thung rac
+    public  function softdeletes($id)
+    {
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $category = Category::findOrFail($id);
+        $category->deleted_at = date("Y-m-d h:i:s"); 
+        $category->save();
         return redirect()->route('categories.index');
     }
+    public  function trash()
+    {
+        $categories = Category::onlyTrashed()->get();
+        $param = ['categories'    => $categories];
+        return view('admin.categories.trash', $param);
+    }
+    public function restoredelete($id)
+    {
+        $categories = Category::withTrashed()->where('id', $id);
+        $categories->restore();
+        return redirect()->route('categories.trash');
+    }
+   
+    
 }
