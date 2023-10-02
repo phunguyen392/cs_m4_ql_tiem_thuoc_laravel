@@ -8,22 +8,95 @@
             <nav class="collapse position-absolute navbar navbar-vertical navbar-light align-items-start p-0 bg-light" id="navbar-vertical" style="width: calc(100% - 30px); z-index: 999;">
                 <div class="navbar-nav w-100">
                     <div class="nav-item dropdown dropright">
-                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Dresses <i class="fa fa-angle-right float-right mt-1"></i></a>
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Bia<i class="fa fa-angle-right float-right mt-1"></i></a>
                         <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
-                            <a href="" class="dropdown-item">Men's Dresses</a>
-                            <a href="" class="dropdown-item">Women's Dresses</a>
-                            <a href="" class="dropdown-item">Baby's Dresses</a>
+                            <a href="" class="dropdown-item">Hà Nội</a>
+                            <a href="" class="dropdown-item">Huda</a>
+                            <a href="" class="dropdown-item">Sài Gòn</a>
+                            <a href="" class="dropdown-item">Tiger</a>
+                            <a href="" class="dropdown-item">Heiniken</a>
+
                         </div>
                     </div>
-                    <a href="" class="nav-item nav-link">Shirts</a>
-                    <a href="" class="nav-item nav-link">Jeans</a>
-                    <a href="" class="nav-item nav-link">Swimwear</a>
-                    <a href="" class="nav-item nav-link">Sleepwear</a>
-                    <a href="" class="nav-item nav-link">Sportswear</a>
-                    <a href="" class="nav-item nav-link">Jumpsuits</a>
-                    <a href="" class="nav-item nav-link">Blazers</a>
-                    <a href="" class="nav-item nav-link">Jackets</a>
-                    <a href="" class="nav-item nav-link">Shoes</a>
+
+                    <div class="nav-item dropdown dropright">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Rượu<i class="fa fa-angle-right float-right mt-1"></i></a>
+                        <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
+                            <a href="" class="dropdown-item">Sim</a>
+                            <a href="" class="dropdown-item">Chuối</a>
+                            <a href="" class="dropdown-item">Đinh lăng</a>
+                            <a href="" class="dropdown-item">Sâm Cau</a>
+                            <a href="" class="dropdown-item">Táo Mèo</a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item dropdown dropright">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Món nhậu<i class="fa fa-angle-right float-right mt-1"></i></a>
+                        <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
+                            <a href="" class="dropdown-item">Rồng xanh vượt đại dương</a>
+                            <a href="" class="dropdown-item">Cá sấu lội bùn</a>
+                            <a href="" class="dropdown-item">Vũ nữ chân dài</a>
+                            <a href="" class="dropdown-item">Táo quân lội vạc dầu</a>
+                            <a href="" class="dropdown-item"></a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item dropdown dropright">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Khai vị<i class="fa fa-angle-right float-right mt-1"></i></a>
+                        <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
+                            <a href="" class="dropdown-item">đậu chiên giòn</a>
+                            <a href="" class="dropdown-item">đậu lạc</a>
+                            <a href="" class="dropdown-item">cà dưa</a>
+                            <a href="" class="dropdown-item"></a>
+                            <a href="" class="dropdown-item"></a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item dropdown dropright">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Đồ uống<i class="fa fa-angle-right float-right mt-1"></i></a>
+                        <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
+                            <a href="" class="dropdown-item">Coca</a>
+                            <a href="" class="dropdown-item">pepsi</a>
+                            <a href="" class="dropdown-item">sting</a>
+                            <a href="" class="dropdown-item">bò húc</a>
+                            <a href="" class="dropdown-item">nước khoáng</a>
+                        </div>
+                    </div>
+
+                    
+                    <div class="nav-item dropdown dropright">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Đồ ăn<i class="fa fa-angle-right float-right mt-1"></i></a>
+                        <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
+                            <a href="" class="dropdown-item">Mì xào hải sản</a>
+                            <a href="" class="dropdown-item">cơm chiên dương châu</a>
+                            <a href="" class="dropdown-item"></a>
+                            <a href="" class="dropdown-item"></a>
+                            <a href="" class="dropdown-item"></a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item dropdown dropright">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Hoa quả<i class="fa fa-angle-right float-right mt-1"></i></a>
+                        <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
+                            <a href="" class="dropdown-item">Miền Bắc</a>
+                            <a href="" class="dropdown-item">Miền Trung</a>
+                            <a href="" class="dropdown-item">Miền Nam</a>
+                            <a href="" class="dropdown-item"></a>
+                            <a href="" class="dropdown-item"></a>
+                        </div>
+                    </div>
+
+                    <div class="nav-item dropdown dropright">
+                        <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Đặc sản địa phương<i class="fa fa-angle-right float-right mt-1"></i></a>
+                        <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
+                            <a href="" class="dropdown-item">Hà Nam</a>
+                            <a href="" class="dropdown-item">Eo biển xanh</a>
+                            <a href="" class="dropdown-item">392</a>
+                            <a href="" class="dropdown-item">Cửa Tùng</a>
+                            <a href="" class="dropdown-item">San hô đỏ</a>
+                        </div>
+                    </div>
+
                 </div>
             </nav>
         </div>

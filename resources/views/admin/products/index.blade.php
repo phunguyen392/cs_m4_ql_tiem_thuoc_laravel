@@ -1,24 +1,24 @@
 @extends('admin.master')
 @section('content')
-<!DOCTYPE html>
-<html lang="en">
+    <!DOCTYPE html>
+    <html lang="en">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
-    <!-- CSS của Bootstrap -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Product</title>
- 
+        <!-- CSS của Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+        <title>Product</title>
 
 
-</head>
 
-<body>
-    <!-- Kiểm tra xem có thông báo thành công hay không và hiển thị SweetAlert2 -->
- <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.1/dist/sweetalert2.min.css">
+    </head>
+
+    <body>
+        <!-- Kiểm tra xem có thông báo thành công hay không và hiển thị SweetAlert2 -->
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.1/dist/sweetalert2.min.css">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.1/dist/sweetalert2.min.js"></script>
         @if (session('successMessage'))
@@ -62,64 +62,66 @@
             </button>
             </form>
         </div>
-<div class="text-end">
-        <a href="{{ route('products.create') }}"><br>
-            <button type="button" class="btn btn-info">New Add</button></a>
-    </div>
-    <div class="container text-center">
-        <table class="table align-items-center   table-hover  border-dark">
-            <thead>
-                <tr class="text-center">
-                    <th class="col-md-2 col-sm-6">ID</th>
-                    <th class="col-md-2 col-sm-6">Product Name</th>
-                    <th class="col-md-2 col-sm-6">category name</th>
-                    <th class="col-md-2 col-sm-6">Quantity</th>
-                    <th class="col-md-2 col-sm-6">Price</th>
+        <div class="text-end">
+            <a href="{{ route('products.create') }}"><br>
+                <button type="button" class="btn btn-info">New Add</button></a>
+        </div>
+        <div class="container text-center">
+            <table class="table align-items-center   table-hover  border-dark">
+                <thead>
+                    <tr class="text-center">
+                        <th class="col-md-2 col-sm-6">ID</th>
+                        <th class="col-md-2 col-sm-6">Product Name</th>
+                        <th class="col-md-2 col-sm-6">Category name</th>
+                        <th class="col-md-2 col-sm-6">Quantity</th>
+                        <th class="col-md-2 col-sm-6">Price</th>
 
-                    <th class="col-md-2 col-sm-6">image</th>
-                    <th class="col-md-2 col-sm-6">Status</th>
-                    <th class="col-md-2 col-sm-6">Action</th>
-                </tr>
-                @foreach($products as $key => $pro)
-            </thead>
-            <tbody>
+                        <th class="col-md-2 col-sm-6">Image minh hoa</th>
+                        <th class="col-md-2 col-sm-6">Status</th>
+                        <th class="col-md-2 col-sm-6">Action</th>
+                    </tr>
+                    @foreach ($products as $key => $pro)
+                </thead>
+                <tbody>
 
-                <tr>
-                    <td>{{$key+1}}</td>
-                    <td>{{$pro->product_name}}</td>
-                    <td>{{$pro->category->category_name}}</td>
-                    <td>{{$pro->quantity}}</td>
-                    <td>{{$pro->price}}</td>
-                    <td>  <img src="{{Storage::url($pro->image)}}" alt="chua hien thi" width="100px"></td>
-                   
-                    <td>
-    @if($pro->status == 0)
-        Hết hàng
-    @else
-        Còn hàng
-    @endif
-</td>
-                    <td>
-                        <div class="d-flex">
-                            <form>
+                    <tr>
+                        <td>{{ $key + 1 }}</td>
+                        <td>{{ $pro->product_name }}</td>
+                        <td>{{ $pro->category->category_name }}</td>
+                        <td>{{ $pro->quantity }}</td>
+                        <td>{{ $pro->price }}</td>
+                        <td> <img src="{{ Storage::url($pro->image) }}" alt="chua hien thi" width="100px"></td>
 
-                                <a href="{{ route('products.edit', ['product' => $pro->id]) }}" class="btn btn-primary">Edit</a>
-                            </form>
+                        <td>
+                            @if ($pro->status == 0)
+                                Hết hàng
+                            @else
+                                Còn hàng
+                            @endif
+                        </td>
+                        <td>
+                            <div class="d-flex">
+                                <form>
 
-                            <form action="{{ route('products.destroy', ['product' => $pro->id]) }}" method="POST">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                            <a href="{{ route('products.show', ['product' => $pro->id]) }}" class="btn btn-success">Show</a>
-                        </div>
-                    </td>
-                </tr>
-                @endforeach
-            </tbody>
-        </table>
-        {{$products->links()}}
-</body>
+                                    <a href="{{ route('products.edit', ['product' => $pro->id]) }}"
+                                        class="btn btn-primary">Edit</a>
+                                </form>
 
-</html>
+                                <form action="{{ route('products.destroy', ['product' => $pro->id]) }}" method="POST">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                                <a href="{{ route('products.show', ['product' => $pro->id]) }}"
+                                    class="btn btn-success">Show</a>
+                            </div>
+                        </td>
+                    </tr>
+                    @endforeach
+                </tbody>
+            </table>
+            {{ $products->links() }}
+    </body>
+
+    </html>
 @endsection
