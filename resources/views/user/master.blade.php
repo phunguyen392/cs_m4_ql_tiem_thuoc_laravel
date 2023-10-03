@@ -27,87 +27,10 @@
 </head>
 
 <body>
-    @yield('content')
     <!-- Topbar Start -->
-    <div class="container-fluid">
-        <div class="row bg-secondary py-1 px-xl-5">
-            <div class="col-lg-6 d-none d-lg-block">
 
-            </div>
-            <div class="col-lg-6 text-center text-lg-right">
-                <div class="d-inline-flex align-items-center">
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My
-                            Account</button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button"> <a href="{{ route('user.login') }}">Sign in</a></button>
-                            <button class="dropdown-item" type="button"><a href="{{ route('user.register') }}">Sign up</a></button>
-                        </div>
-                    </div>
-                    <div class="btn-group mx-2">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle"
-                            data-toggle="dropdown">USD</button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button">EUR</button>
-                            <button class="dropdown-item" type="button">GBP</button>
-                        </div>
-                    </div>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-sm btn-light dropdown-toggle"
-                            data-toggle="dropdown">EN</button>
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <button class="dropdown-item" type="button">USD</button>
-                            <button class="dropdown-item" type="button">VIE</button>
-                        </div>
-                    </div>
-                </div>
-                <div class="d-inline-flex align-items-center d-block d-lg-none">
-                    <a href="" class="btn px-0 ml-2">
-                        <i class="fas fa-heart text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle"
-                            style="padding-bottom: 2px;">0</span>
-                    </a>
-                    <a href="" class="btn px-0 ml-2">
-                        <i class="fas fa-shopping-cart text-dark"></i>
-                        <span class="badge text-dark border border-dark rounded-circle"
-                            style="padding-bottom: 2px;">0</span>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div class="row align-items-center bg-light py-3 px-xl-5 d-none d-lg-flex">
-            <div class="col-lg-4">
-                <a href="" class="text-decoration-none">
-                    <span class="h1 text-uppercase text-primary bg-dark px-2">HỘI</span>
-                    <span class="h1 text-uppercase text-dark bg-primary px-2 ml-n1">QUÁN</span>
-                </a>
-            </div>
-            <div class="col-lg-4 col-6 text-left">
-                <form action="{{ route('products.index') }}">
-                    <div class="input-group">
-                        <input name="keyword" type="text" class="form-control" placeholder="Search for ">
-                        <div class="input-group-append">
-                            <button id="search-button" type="submit" class="btn btn-primary">
-
-                                <i class="fa fa-search"></i>
-                            </button>
-
-                            </span>
-                        </div>
-                    </div>
-                </form>
-            </div>
-
-
-
-
-            <div class="col-lg-4 col-6 text-right">
-                <p class="m-0">Customer Service</p>
-                <h5 class="m-0">+012 345 6789</h5>
-            </div>
-        </div>
-    </div>
     <!-- Topbar End -->
+    @include('user.includes.header');
 
 
     <!-- Navbar Start -->
@@ -119,12 +42,12 @@
 
 
     <!-- Featured Start -->
-    {{-- @include('user.includes.featured'); --}}
+    @include('user.includes.featured');
     <!-- Featured End -->
 
 
     <!-- Categories Start -->
-    @include('user.includes.cate_user');
+    {{-- @include('user.includes.cate_user'); --}}
     <!-- Categories End -->
 
 
@@ -152,7 +75,7 @@
 
 
     <!-- Offer Start -->
-    {{-- <div class="container-fluid pt-5 pb-3">
+    <div class="container-fluid pt-5 pb-3">
         <div class="row px-xl-5">
             <div class="col-md-6">
                 <div class="product-offer mb-30" style="height: 300px;">
@@ -175,78 +98,17 @@
                 </div>
             </div>
         </div>
-    </div> --}}
+    </div>
     <!-- Offer End -->
 
 
     <!-- Products Start -->
-    <div class="container-fluid pt-5 pb-3">
-        <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span
-                class="bg-secondary pr-3">PRODUCTS</span></h2>
-        <div class="row px-xl-5">
-            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
-                <div class="product-item bg-light mb-4">
-                    <div class="product-img position-relative overflow-hidden">
-                        <img class="img-fluid w-100" src="{{ asset('user/img/camu.jpg') }}" alt="">
-                        <div class="product-action">
-                            <a class="btn btn-outline-dark btn-square" href=""><i
-                                    class="fa fa-shopping-cart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i
-                                    class="far fa-heart"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i
-                                    class="fa fa-sync-alt"></i></a>
-                            <a class="btn btn-outline-dark btn-square" href=""><i
-                                    class="fa fa-search"></i></a>
-                        </div>
-                    </div>
-                    <div class="text-center py-4">
-                        <a class="h6 text-decoration-none text-truncate" href="">Huda</a>
-                        <div class="d-flex align-items-center justify-content-center mt-2">
-                            <h5>$12.0</h5>
-                            {{-- <h6 class="text-muted ml-2"><del>$123.00</del></h6> --}}
-                        </div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   @yield('content')
     <!-- Products End -->
 
 
     <!-- Vendor Start -->
-    <div class="container-fluid py-5">
-        <div class="row px-xl-5">
-            <div class="col">
-                <div class="owl-carousel vendor-carousel">
-                    <div class="bg-light p-4">
-                        <img src="img/vendor-1.jpg" alt="">
-                    </div>
-                    <div class="bg-light p-4">
-                        <img src="img/vendor-2.jpg" alt="">
-                    </div>
-                    <div class="bg-light p-4">
-                        <img src="img/vendor-3.jpg" alt="">
-                    </div>
-                    <div class="bg-light p-4">
-                        <img src="img/vendor-4.jpg" alt="">
-                    </div>
-                    <div class="bg-light p-4">
-                        <img src="img/vendor-5.jpg" alt="">
-                    </div>
-                    <div class="bg-light p-4">
-                        <img src="img/vendor-6.jpg" alt="">
-                    </div>
-                    <div class="bg-light p-4">
-                        <img src="img/vendor-7.jpg" alt="">
-                    </div>
-                    <div class="bg-light p-4">
-                        <img src="img/vendor-8.jpg" alt="">
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+   
     <!-- Vendor End -->
 
 

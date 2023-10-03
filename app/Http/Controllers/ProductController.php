@@ -37,7 +37,7 @@ class ProductController extends Controller
     
         $products = $products->orderby('id','desc')->paginate(3);
     
-        return view('admin/products/index', compact('products','successMessage'));
+        return view('admin.products.index', compact('products','successMessage'));
         
     }
 
@@ -136,11 +136,44 @@ class ProductController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Request $request, $id)
-    {
-        $pro = Product::destroy($id);
-        $request->session()->flash('successMessage2', 'Delete success');
-        return redirect()->route('products.index');
+    // public function destroy(Request $request, $id)
+    // {
+    //     $pro = Product::destroy($id);
+    //     $request->session()->flash('successMessage2', 'Delete success');
+    //     return redirect()->route('products.index');
 
+    // }
+
+    public function destroy(Request $request,$id)
+    {
+        // $this->authorize('forceDelete', Product::class);
+        $request->session()->flash('successMessage2', 'Delete success');
+
+        $product = Product::onlyTrashed()->findOrFail($id);
+        $product->forceDelete();
+        return redirect()->back()->with('status', 'Xóa san pham thành công');
+    }
+
+
+    //thung rac
+    public  function softdeletes($id)
+    {
+        date_default_timezone_set("Asia/Ho_Chi_Minh");
+        $category = Product::findOrFail($id);
+        $category->deleted_at = date("Y-m-d h:i:s");
+        $category->save();
+        return redirect()->route('products.index');
+    }
+    public  function trash()
+    {
+        $products = Product::onlyTrashed()->get();
+        $param = ['products'    => $products];
+        return view('admin.products.trash', $param);
+    }
+    public function restoredelete($id)
+    {
+        $products = Product::withTrashed()->where('id', $id);
+        $products->restore();
+        return redirect()->route('products.trash');
     }
 }

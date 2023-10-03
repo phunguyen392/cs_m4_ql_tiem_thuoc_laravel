@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use App\Models\Category;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
@@ -12,8 +13,8 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(3);
-        return view('admin/categories/index',compact('categories'));
+        $categories = Category::orderBy('id', 'desc')->paginate(3);
+        return view('admin/categories/index', compact('categories'));
     }
 
     /**
@@ -22,7 +23,6 @@ class CategoryController extends Controller
     public function create()
     {
         return view('admin/categories/create');
-
     }
 
     /**
@@ -42,8 +42,8 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
-        $cate= Category::find($id);
-        return view('admin.categories.show',compact('cate'));
+        $cate = Category::find($id);
+        return view('admin.categories.show', compact('cate'));
     }
 
     /**
@@ -51,8 +51,9 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $cate= Category::find($id);
-        return view('admin/categories/edit',compact('cate')).$id;    }
+        $cate = Category::find($id);
+        return view('admin/categories/edit', compact('cate')) . $id;
+    }
 
     /**
      * Update the specified resource in storage.
@@ -71,19 +72,19 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        $this->authorize('forceDelete', Category::class);
+        // $this->authorize('forceDelete', Category::class);
         $category = Category::onlyTrashed()->findOrFail($id);
         $category->forceDelete();
         return redirect()->back()->with('status', 'Xóa danh mục thành công');
     }
 
 
-//thung rac
+    //thung rac
     public  function softdeletes($id)
     {
         date_default_timezone_set("Asia/Ho_Chi_Minh");
         $category = Category::findOrFail($id);
-        $category->deleted_at = date("Y-m-d h:i:s"); 
+        $category->deleted_at = date("Y-m-d h:i:s");
         $category->save();
         return redirect()->route('categories.index');
     }
@@ -99,6 +100,4 @@ class CategoryController extends Controller
         $categories->restore();
         return redirect()->route('categories.trash');
     }
-   
-    
 }

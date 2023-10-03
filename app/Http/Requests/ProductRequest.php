@@ -22,7 +22,7 @@ class ProductRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'product_name'=>'required|unique:products'
+            'product_name'=>'required|unique:products,product_name,' . $this->route('product'),
         ];
     }
     public function messages()

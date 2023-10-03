@@ -107,9 +107,9 @@
                                         class="btn btn-primary">Edit</a>
                                 </form>
 
-                                <form action="{{ route('products.destroy', ['product' => $pro->id]) }}" method="POST">
+                                <form action="{{  route('products.softdeletes', $pro->id)  }}" method="POST">
                                     @csrf
-                                    @method('DELETE')
+                                    @method('PUT')
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                                 <a href="{{ route('products.show', ['product' => $pro->id]) }}"

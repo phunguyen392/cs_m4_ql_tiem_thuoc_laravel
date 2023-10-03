@@ -65,12 +65,34 @@ class ShopController extends Controller
             return redirect('user/login')->with('error', 'Đăng nhập thất bại, tk or mk k đúng');
         }
     }
-    public function home()
+    public function home(Request $request)
     {
         $categories = Category::get();
-        $products = Product::get();
+        // $products = Product::paginate(4);
 
+
+
+        $products = Product::with('category');
+    
+        if ($request->has('keyword')) {
+            $keyword = $request->keyword;
+            $products->where('product_name', 'like', '%' . $keyword . '%')
+             ->orwhere('status', 'like', '%' . $keyword . '%');
+        }
+    
+        $products = $products->orderby('id','desc')->paginate(4);
+     
         return view('user.home',compact('categories','products'));
+        
+    }
+
+    public function detail($id){
+        
+        $category = Category::find($id);
+        $product = Product::find($id);
+        $products = Product::get();
+        $relatedProducts = $category->products;
+        return view('user.detail',compact('category','product','products','relatedProducts'));
+    }
 
     }
-}

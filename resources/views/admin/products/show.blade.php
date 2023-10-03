@@ -1,3 +1,5 @@
+@extends('admin.master')
+@section('content')
 <table border="1">
     <tr>
     <tr class="text-center">
@@ -37,3 +39,4 @@
 
     </tr>
 </table>
+@endsection
