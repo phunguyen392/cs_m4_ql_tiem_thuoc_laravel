@@ -60,5 +60,11 @@ Route::post('user/checkRegister', [ShopController::class, 'checkRegister'])->nam
 Route::get('user/login', [ShopController::class, 'login'])->name('user.login');
 Route::post('user/checklogin', [ShopController::class, 'checklogin'])->name('user.checklogin');
 
-Route::get('user/home', [ShopController::class, 'home'])->name('user.home');
+Route::get('/', [ShopController::class, 'home'])->name('user.home');
 Route::get('user/detail/{id}', [ShopController::class, 'detail'])->name('user.detail');
+
+//gio hang
+Route::get('cart', [ShopController::class, 'cart'])->name('cart');
+Route::get('add-to-cart/{id}', [ShopController::class, 'addToCart'])->name('add.to.cart');
+Route::patch('update-cart', [ShopController::class, 'update'])->name('update.cart');
+Route::delete('remove-from-cart', [ShopController::class, 'remove'])->name('remove.from.cart');

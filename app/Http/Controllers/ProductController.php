@@ -62,18 +62,27 @@ class ProductController extends Controller
             $pro->quantity = $request->quantity;
             $pro->price = $request->price;
             $pro->status = $request->status;
+            $pro->description = $request->description;
 
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $filename = time() . '.' . $image->getClientOriginalExtension();
+
+            // if ($request->hasFile('image')) {
+            //     $image = $request->file('image');
+            //     $filename = time() . '.' . $image->getClientOriginalExtension();
     
-                // Lưu hình ảnh gốc vào thư mục "storage/images"
-                $image->storeAs('public/images', $filename);
+            //     // Lưu hình ảnh gốc vào thư mục "storage/images"
+            //     $image->storeAs('public/images', $filename);
     
-                // Đường dẫn đến hình ảnh lưu trong cơ sở dữ liệu
-                $pro->image = 'images/' . $filename;
+            //     // Đường dẫn đến hình ảnh lưu trong cơ sở dữ liệu
+            //     $pro->image = 'images/' . $filename;
+            // }
+            $fieldName = 'image';
+            if ($request->hasFile($fieldName)) {
+                $get_img = $request->file($fieldName);
+                $path = 'storage/product/';
+                $new_name_img = $request->name.$get_img->getClientOriginalName();
+                $get_img->move($path,$new_name_img);
+                $pro->image = $path.$new_name_img;
             }
-           
             $pro->save();
         $request->session()->flash('successMessage', 'Create success');
 
@@ -127,6 +136,8 @@ class ProductController extends Controller
             }
         }
         $product->status = $request->status;
+        $product->description = $request->description;
+
         $product->save();
         $request->session()->flash('successMessage1', 'Edit success');
 

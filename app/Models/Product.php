@@ -16,7 +16,8 @@ class Product extends Model
         'quantity',
         'price',
         'image',
-        'status'
+        'status',
+        'description'
 
     ];
     public $timestamp = true;
