@@ -13,8 +13,14 @@ class GroupSeeder extends Seeder
      */
     public function run(): void
     {
+        
+
         $group = new Group();
-        $group->name = 'Staff';
+        $group->name = 'Manager';
+        $group->save();
+
+        $group = new Group();
+        $group->name = 'Admin';
         $group->save();
     }
 }

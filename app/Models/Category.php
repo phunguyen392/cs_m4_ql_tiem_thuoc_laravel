@@ -18,6 +18,6 @@ class Category extends Model
     public $timestamp = true;
     public function product()
     {
-        return $this->hasMany(Product::class, 'category_id', 'id');
+        return $this->hasMany(Product::class, 'category_id', 'id')->withTrashed();
     }
 }

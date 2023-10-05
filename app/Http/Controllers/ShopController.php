@@ -67,32 +67,161 @@ class ShopController extends Controller
     }
     public function home(Request $request)
     {
-        $categories = Category::get();
+        // $categories = Category::get();
         // $products = Product::paginate(4);
+
+        $categories = Category::all();
+
+
+
+
 
 
 
         $products = Product::with('category');
-    
+
         if ($request->has('keyword')) {
             $keyword = $request->keyword;
             $products->where('product_name', 'like', '%' . $keyword . '%')
-             ->orwhere('status', 'like', '%' . $keyword . '%');
+                ->orwhere('status', 'like', '%' . $keyword . '%');
         }
+<<<<<<< HEAD
     
         $products = $products->where('status',1)->orderby('id','desc')->paginate(4);
      
         return view('user.home',compact('categories','products'));
         
+=======
+
+        $products = $products->where('status', 1)->orderby('id', 'desc')->paginate(8);
+
+        return view('user.home', compact('categories', 'products'));
+>>>>>>> ea81c529b302f9a0f58d15a16237539be687077a
     }
 
-    public function detail($id){
-        
+    public function detail($id)
+    {
         $category = Category::find($id);
         $product = Product::find($id);
-        $products = Product::get();
-        $relatedProducts = $category->products;
-        return view('user.detail',compact('category','product','products','relatedProducts'));
+        return view('user.detail', compact('category', 'product'));
     }
 
+
+
+    
+    public function cart()
+
+    {
+        $products = Product::get();
+
+        return view('user.cart');
     }
+
+
+
+    /**
+
+     * Write code on Method
+
+     *
+
+     * @return response()
+
+     */
+
+    public function addToCart($id)
+
+    {
+
+        $product = Product::findOrFail($id);
+
+
+
+        $cart = session()->get('cart', []);
+
+
+
+        if (isset($cart[$id])) {
+
+            $cart[$id]['quantity']++;
+        } else {
+
+            $cart[$id] = [
+
+                "product_name" => $product->product_name,
+
+                "quantity" =>1,
+
+                "price" => $product->price,
+
+                "image" => $product->image
+
+            ];
+        }
+
+
+
+        session()->put('cart', $cart);
+
+        return redirect()->back()->with('success', 'Product added to cart successfully!');
+    }
+
+
+
+    /**
+
+     * Write code on Method
+
+     *
+
+     * @return response()
+
+     */
+
+    public function update(Request $request)
+
+    {
+
+        if ($request->id && $request->quantity) {
+
+            $cart = session()->get('cart');
+
+            $cart[$request->id]["quantity"] = $request->quantity;
+
+            session()->put('cart', $cart);
+
+            session()->flash('success', 'them thanh cong');
+        }
+    }
+
+
+
+    /**
+
+     * Write code on Method
+
+     *
+
+     * @return response()
+
+     */
+
+    public function remove(Request $request)
+
+    {
+
+        if ($request->id) {
+
+            $cart = session()->get('cart');
+
+            if (isset($cart[$request->id])) {
+
+                unset($cart[$request->id]);
+
+                session()->put('cart', $cart);
+            }
+
+            session()->flash('success', 'xoa sp thanh cong');
+        }
+    }
+}

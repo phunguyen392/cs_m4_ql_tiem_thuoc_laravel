@@ -41,6 +41,10 @@
                         <option value="1" {{ $product->status == 1 ? 'selected' : '' }}>Còn hàng</option>
                     </select>
                 </p>
+                <p>
+                    <label for="description">Description:<br></label>
+                    <input type="text" id="name" name="description" value="{{$product->description}}">
+                </p>
                 <input type="submit" value="Update">
       
                 

@@ -78,6 +78,7 @@
 
                         <th class="col-md-2 col-sm-6">Image minh hoa</th>
                         <th class="col-md-2 col-sm-6">Status</th>
+
                         <th class="col-md-2 col-sm-6">Action</th>
                     </tr>
                     @foreach ($products as $key => $pro)
