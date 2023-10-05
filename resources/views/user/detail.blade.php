@@ -70,7 +70,11 @@
                                 </div>
                             </div>
                         </div> --}}
-                        <a href="{{ route('add.to.cart', ['id' => $product->id]) }}"><button class="btn btn-primary">them</button></a>
+                        <a href="{{ route('add.to.cart', ['id' => $product->id]) }}"><button class="btn btn-primary">Add</button></a>
+                        <a href="{{ route('cart') }}" class="btn px-0 ml-3">
+                            <i class="fas fa-shopping-cart text-primary"></i>
+                            <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">{{ count((array) session('cart')) }}</span>
+                        </a>
                     </div>
 
                     <div class="d-flex pt-2">

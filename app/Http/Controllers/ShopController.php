@@ -67,8 +67,14 @@ class ShopController extends Controller
     }
     public function home(Request $request)
     {
-        $categories = Category::get();
+        // $categories = Category::get();
         // $products = Product::paginate(4);
+
+        $categories = Category::all();
+
+
+
+
 
 
 
@@ -80,7 +86,7 @@ class ShopController extends Controller
                 ->orwhere('status', 'like', '%' . $keyword . '%');
         }
 
-        $products = $products->where('status', 1)->orderby('id', 'desc')->paginate(4);
+        $products = $products->where('status', 1)->orderby('id', 'desc')->paginate(8);
 
         return view('user.home', compact('categories', 'products'));
     }

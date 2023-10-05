@@ -13,6 +13,15 @@
         </tr>
     </thead>
     <tbody>
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
         @php $total = 0 @endphp
         @if(session('cart'))
             @foreach(session('cart') as $id => $product)
@@ -31,11 +40,11 @@
                             </div>
                         </div>
                     </td>
-                    <td data-th="Price">{{ $product['price'] }}</td>
+                    <td data-th="Price">{{ $product['price'] }} K</td>
                     <td data-th="Quantity">
                         <input type="number" value="{{ $product['quantity'] }}" class="form-control quantity update-cart" />
                     </td>
-                    <td data-th="Subtotal" class="text-center">{{ $subtotal }}</td>
+                    <td data-th="Subtotal" class="text-center">{{ $subtotal }} K</td>
                     <td class="actions" data-th="">
                         <button class="btn btn-danger btn-sm remove-from-cart"><i class="fa fa-trash-o"></i></button>
                     </td>

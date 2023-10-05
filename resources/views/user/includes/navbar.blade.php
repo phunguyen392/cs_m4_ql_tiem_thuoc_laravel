@@ -18,7 +18,7 @@
 
                         </div>
                     </div>
-
+{{-- <div>
                     <div class="nav-item dropdown dropright">
                         <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Rượu<i class="fa fa-angle-right float-right mt-1"></i></a>
                         <div class="dropdown-menu position-absolute rounded-0 border-0 m-0">
@@ -96,7 +96,7 @@
                             <a href="" class="dropdown-item">San hô đỏ</a>
                         </div>
                     </div>
-
+</div> --}}
                 </div>
             </nav>
         </div>
@@ -117,7 +117,7 @@
                         <div class="nav-item dropdown">
                             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Pages <i class="fa fa-angle-down mt-1"></i></a>
                             <div class="dropdown-menu bg-primary rounded-0 border-0 m-0">
-                                <a href="cart.html" class="dropdown-item">Shopping Cart</a>
+                                <a href="{{ route('cart') }}" class="dropdown-item">Shopping Cart</a>
                                 <a href="checkout.html" class="dropdown-item">Checkout</a>
                             </div>
                         </div>
@@ -128,7 +128,7 @@
                             <i class="fas fa-heart text-primary"></i>
                             <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">1</span>
                         </a>
-                        <a href="" class="btn px-0 ml-3">
+                        <a href="{{ route('cart') }}" class="btn px-0 ml-3">
                             <i class="fas fa-shopping-cart text-primary"></i>
                             <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">{{ count((array) session('cart')) }}</span>
                         </a>
