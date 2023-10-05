@@ -80,7 +80,7 @@ class ShopController extends Controller
              ->orwhere('status', 'like', '%' . $keyword . '%');
         }
     
-        $products = $products->orderby('id','desc')->paginate(4);
+        $products = $products->where('status',1)->orderby('id','desc')->paginate(4);
      
         return view('user.home',compact('categories','products'));
         
