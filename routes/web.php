@@ -7,10 +7,11 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use App\Models\Customer;
-
 use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -43,10 +44,13 @@ Route::get('products/destroy/{id}', [ProductController::class, 'destroy'])->name
 
 
 //category
-Route::resource('categories', CategoryController::class);
-//product
-Route::resource('products', ProductController::class);
+// Route::middleware(['login_md'])->group(function () {
 
+
+    Route::resource('categories', CategoryController::class);
+    //product
+    Route::resource('products', ProductController::class);
+// });
 //login
 Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 Route::post('/login', [AuthController::class, 'login']);
@@ -59,7 +63,7 @@ Route::get('user/register', [ShopController::class, 'register'])->name('user.reg
 Route::post('user/checkRegister', [ShopController::class, 'checkRegister'])->name('user.checkRegister');
 Route::get('user/login', [ShopController::class, 'login'])->name('user.login');
 Route::post('user/checklogin', [ShopController::class, 'checklogin'])->name('user.checklogin');
-
+//details route
 Route::get('/', [ShopController::class, 'home'])->name('user.home');
 Route::get('user/detail/{id}', [ShopController::class, 'detail'])->name('user.detail');
 
@@ -68,3 +72,11 @@ Route::get('cart', [ShopController::class, 'cart'])->name('cart');
 Route::get('add-to-cart/{id}', [ShopController::class, 'addToCart'])->name('add.to.cart');
 Route::patch('update-cart', [ShopController::class, 'update'])->name('update.cart');
 Route::delete('remove-from-cart', [ShopController::class, 'remove'])->name('remove.from.cart');
+
+//chekOut
+Route::get('checkout', [ShopController::class, 'checkout'])->name('checkout');
+Route::get('/c', function () {
+    return view('user.checkout1');
+});
+//order
+Route::post('/order', [ShopController::class, 'order'])->name('order');

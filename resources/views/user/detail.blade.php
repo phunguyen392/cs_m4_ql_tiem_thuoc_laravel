@@ -35,7 +35,7 @@
                     <h3 class="font-weight-semi-bold mb-4">{{ number_format($product->price) }} K</h3>
                     <p class="font-family">{{ $product->description }}</p>
 
-                    <div>
+                    
                         <div class="d-flex align-items-center mb-4 pt-2">
                             <div class="input-group quantity mr-3" style="width: 130px;">
                                 <div class="input-group-btn">
@@ -70,11 +70,22 @@
                                 </div>
                             </div>
                         </div> --}}
-                        <a href="{{ route('add.to.cart', ['id' => $product->id]) }}"><button class="btn btn-primary">Add</button></a>
+                        <a href="{{ route('add.to.cart', ['id' => $product->id]) }}"><button
+                                class="btn btn-primary">Add</button></a>
                         <a href="{{ route('cart') }}" class="btn px-0 ml-3">
                             <i class="fas fa-shopping-cart text-primary"></i>
-                            <span class="badge text-secondary border border-secondary rounded-circle" style="padding-bottom: 2px;">{{ count((array) session('cart')) }}</span>
+                            <span class="badge text-primary border border-primary rounded-circle"
+                                style="padding-bottom: 2px;">{{ count((array) session('cart')) }}</span>
                         </a>
+                    </div>
+                    <div>
+                        <tr>
+                            <td colspan="5" class="text-right">
+                                <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i>
+                                    Continue Shopping</a>
+                                <a href="{{ route('checkout') }}"><button class="btn btn-success">Checkout</button></a>
+                            </td>
+                        </tr>
                     </div>
 
                     <div class="d-flex pt-2">

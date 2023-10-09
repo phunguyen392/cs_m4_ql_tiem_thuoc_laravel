@@ -100,6 +100,7 @@
                                 Còn hàng
                             @endif
                         </td>
+                        
                         <td>
                             <div class="d-flex">
                                 <form>

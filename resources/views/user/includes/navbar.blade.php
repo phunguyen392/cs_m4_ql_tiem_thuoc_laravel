@@ -148,31 +148,31 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item position-relative" style="height: 430px;">
-                    <img class="position-absolute w-100 h-100" src="img/carousel-1.jpg" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100" src="{{ asset('user/img/ken.jpg') }}" style="object-fit: cover;">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 700px;">
-                            <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Men Fashion</h1>
-                            <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
+                            <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Beers</h1>
+                            <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Cho nguoi khong uong duoc ruou</p>
                             <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item position-relative" style="height: 430px;">
-                    <img class="position-absolute w-100 h-100" src="img/carousel-2.jpg" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100" src="{{ asset('user/img/hau.jpg') }}" style="object-fit: cover;">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 700px;">
-                            <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Women Fashion</h1>
-                            <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
+                            <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Hải sản</h1>
+                            <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Cho ai đam mê khám phá những ngọn núi to, tròn và những khu rừng hoang sơ nhiều thác nước</p>
                             <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
                         </div>
                     </div>
                 </div>
                 <div class="carousel-item position-relative active" style="height: 430px;">
-                    <img class="position-absolute w-100 h-100" src="img/carousel-3.jpg" style="object-fit: cover;">
+                    <img class="position-absolute w-80 h-80" src="{{ asset('user/img/chivas.jpg') }}" style="object-fit: cover;">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 700px;">
-                            <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Kids Fashion</h1>
-                            <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Lorem rebum magna amet lorem magna erat diam stet. Sadips duo stet amet amet ndiam elitr ipsum diam</p>
+                            <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Rượu</h1>
+                            <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Cho ai đam mê bộ môn thể thao mạo hiểm</p>
                             <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
                         </div>
                     </div>
@@ -182,18 +182,18 @@
     </div>
     <div class="col-lg-4">
         <div class="product-offer mb-30" style="height: 200px;">
-            <img class="img-fluid" src="img/offer-1.jpg" alt="">
+            <img class="img-fluid" src="{{ asset('user/img/cua.jpg') }}" alt="">
             <div class="offer-text">
-                <h6 class="text-white text-uppercase">Save 20%</h6>
-                <h3 class="text-white mb-3">Special Offer</h3>
+                <h6 class="text-white text-uppercase">Sale 10%</h6>
+                <h3 class="text-white mb-3">Cho phát đầu tiên</h3>
                 <a href="" class="btn btn-primary">Shop Now</a>
             </div>
         </div>
         <div class="product-offer mb-30" style="height: 200px;">
-            <img class="img-fluid" src="img/offer-2.jpg" alt="">
+            <img class="img-fluid" src="{{ asset('user/img/tomhum.jpg') }}" alt="">
             <div class="offer-text">
-                <h6 class="text-white text-uppercase">Save 20%</h6>
-                <h3 class="text-white mb-3">Special Offer</h3>
+                <h6 class="text-white text-uppercase">Sale 20%</h6>
+                <h3 class="text-white mb-3">Cho thùng thứ ba </h3>
                 <a href="" class="btn btn-primary">Shop Now</a>
             </div>
         </div>

@@ -1,3 +1,5 @@
+@extends('admin.master')
+@section('content')
 <!DOCTYPE html>
 <html lang="en">
 
@@ -56,7 +58,12 @@
                     <option value="1">con hang</option>
 
                 </select>
+            </p>     
+            <p>
+                <label>Description:</label><br>
+              <input type="textarea" name="description">
             </p>
+
             <input type="submit" value="New Add">
         </form>
     </div>
@@ -71,3 +78,4 @@
 }
 
 </style>
+@endsection

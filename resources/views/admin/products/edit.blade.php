@@ -43,7 +43,7 @@
                 </p>
                 <p>
                     <label for="description">Description:<br></label>
-                    <input type="text" id="name" name="description" value="{{$product->description}}">
+                    <textarea name="description" id="description">{{$product->description}}</textarea>
                 </p>
                 <input type="submit" value="Update">
       
