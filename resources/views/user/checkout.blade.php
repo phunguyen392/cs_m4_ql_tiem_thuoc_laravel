@@ -39,7 +39,7 @@
                                         hàng</button>
                                 @else
                                     <h4>Vui lòng đăng nhập trước khi thanh toán nhé</h4>
-                                    <a href="{{ route('login') }}" class="btn btn-danger">Đăng Nhập</a>
+                                    <a href="{{ route('user.login') }}" class="btn btn-danger">Đăng Nhập</a>
                         @endif
                         @php
                             

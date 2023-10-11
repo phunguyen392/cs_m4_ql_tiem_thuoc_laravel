@@ -15,7 +15,12 @@
 
 
     </head>
-
+    <li class="nav-item dropdown">
+        <select class=" changeLang">
+            <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
+            <option value="vi" {{ session()->get('locale') == 'vi' ? 'selected' : '' }}>VI</option>
+        </select>
+    </li>
     <body>
         <!-- Kiểm tra xem có thông báo thành công hay không và hiển thị SweetAlert2 -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.1/dist/sweetalert2.min.css">
@@ -92,7 +97,7 @@
                         <td>{{ $pro->quantity }}</td>
                         <td>{{ $pro->price }}</td>
                         <td> <img src="{{ Storage::url($pro->image) }}" alt="chua hien thi" width="100px"></td>
-
+                        {{-- <td>{{ $pro->discription }}</td> --}}
                         <td>
                             @if ($pro->status == 0)
                                 Hết hàng
@@ -100,7 +105,7 @@
                                 Còn hàng
                             @endif
                         </td>
-                        
+
                         <td>
                             <div class="d-flex">
                                 <form>
@@ -109,7 +114,7 @@
                                         class="btn btn-primary">Edit</a>
                                 </form>
 
-                                <form action="{{  route('products.softdeletes', $pro->id)  }}" method="POST">
+                                <form action="{{ route('products.softdeletes', $pro->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
                                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -122,6 +127,7 @@
                     @endforeach
                 </tbody>
             </table>
+
             {{ $products->links() }}
     </body>
 

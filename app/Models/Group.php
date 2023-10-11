@@ -15,8 +15,20 @@ class Group extends Model
         'deleted_at'
     ];
     public $timestamp = true;
-    public function product()
+    public function role()
     {
-        return $this->hasMany(Product::class, 'group_id', 'id');
+        return $this->belongsToMany(Role::class);
+    }
+    public function user()
+    {
+        return $this->hasMany(User::class, 'group_id', 'id');
+        
+    }
+    public function scopesearch($query)
+    {
+        if ($key = request()->search) {
+            $query = $query->where('name', 'like', '%' . $key . '%');
+        }
+        return $query;
     }
 }

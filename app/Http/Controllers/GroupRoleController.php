@@ -19,7 +19,7 @@ class GroupRoleController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.groups.create');
     }
 
     /**

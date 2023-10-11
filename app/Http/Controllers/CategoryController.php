@@ -3,8 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use App\Http\Requests\CategoryRequest;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\App;
 
 class CategoryController extends Controller
 {
@@ -13,7 +17,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::orderBy('id', 'desc')->paginate(3);
+        $this->authorize('viewAny', Category::class);
+        
+        $categories = Category::orderBy('id', 'desc')->paginate(4);
         return view('admin/categories/index', compact('categories'));
     }
 
@@ -22,6 +28,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
+        $this->authorize('create', Category::class);
+
         return view('admin/categories/create');
     }
 
@@ -30,6 +38,8 @@ class CategoryController extends Controller
      */
     public function store(CategoryRequest $request)
     {
+        $this->authorize('restore', Category::class);
+
         $cate = new Category();
         $cate->category_name = $request->category_name;
         $cate->description = $request->description;
@@ -42,6 +52,8 @@ class CategoryController extends Controller
      */
     public function show(string $id)
     {
+        $this->authorize('view', Category::class);
+        
         $cate = Category::find($id);
         return view('admin.categories.show', compact('cate'));
     }
@@ -52,7 +64,12 @@ class CategoryController extends Controller
     public function edit(string $id)
     {
         $cate = Category::find($id);
-        return view('admin/categories/edit', compact('cate')) . $id;
+        // if (Gate::allows('edit-category', $cate)) {
+        return view('admin.categories.edit', compact('cate'));
+        // }
+        // else{
+        //     return redirect()->route('categories.index')->with('error', 'Bạn không có quyền chỉnh sửa bài viết này.');
+        // }
     }
 
     /**
@@ -72,7 +89,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        // $this->authorize('forceDelete', Category::class);
+        $this->authorize('forceDelete', Category::class);
         $category = Category::onlyTrashed()->findOrFail($id);
         $category->forceDelete();
         return redirect()->back()->with('status', 'Xóa danh mục thành công');
@@ -90,6 +107,8 @@ class CategoryController extends Controller
     }
     public  function trash()
     {
+        $this->authorize('viewtrash',Category::class);  
+
         $categories = Category::onlyTrashed()->get();
         $param = ['categories'    => $categories];
         return view('admin.categories.trash', $param);
@@ -100,4 +119,16 @@ class CategoryController extends Controller
         $categories->restore();
         return redirect()->route('categories.trash');
     }
+
+    public function change(Request $request)
+    {
+        App::setLocale($request->lang);
+        session()->put('locale', $request->lang);
+        return redirect()->back();
+    }
+
+
+
+
+
 }

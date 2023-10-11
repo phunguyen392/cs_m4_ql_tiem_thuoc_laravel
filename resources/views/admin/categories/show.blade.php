@@ -1,15 +1,42 @@
-<table border="1">
+@extends('admin.master')
+@section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <li class="nav-item dropdown">
+        <select class=" changeLang">
+            <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
+            <option value="vi" {{ session()->get('locale') == 'vi' ? 'selected' : '' }}>VI</option>
+        </select>
+    </li>
+
+
+
+
+<table class="table table-bordered" border="2">
     <tr>
-        <th>ID</th>
-        <th>Description</th>
-        <th>Action</th>
+        <th>{{ __('language.tt') }}</th>
+        <th>{{ __('language.description') }}</th>
+        <th>{{ __('language.action') }}</th>
 
     </tr>
     <tr>
         <td>{{$cate->id}}</td>
-        <td>{{$cate->description}}</td>
+        <td>{!! $cate->description !!}</td>
       <td>  
                 <a href="{{route('categories.index')}}" class="btn btn-warning">BACK</a>
       </td>
     </tr>
 </table>
+
+
+</body>
+</html>
+
+@endsection

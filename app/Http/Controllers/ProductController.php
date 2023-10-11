@@ -35,7 +35,7 @@ class ProductController extends Controller
              ->orwhere('status', 'like', '%' . $keyword . '%');
         }
     
-        $products = $products->orderby('id','desc')->paginate(3);
+        $products = $products->orderby('id','desc')->paginate(5);
     
         return view('admin.products.index', compact('products','successMessage'));
         
@@ -65,24 +65,24 @@ class ProductController extends Controller
             $pro->description = $request->description;
 
 
-            // if ($request->hasFile('image')) {
-            //     $image = $request->file('image');
-            //     $filename = time() . '.' . $image->getClientOriginalExtension();
+            if ($request->hasFile('image')) {
+                $image = $request->file('image');
+                $filename = time() . '.' . $image->getClientOriginalExtension();
     
-            //     // Lưu hình ảnh gốc vào thư mục "storage/images"
-            //     $image->storeAs('public/images', $filename);
+                // Lưu hình ảnh gốc vào thư mục "storage/images"
+                $image->storeAs('public/images', $filename);
     
-            //     // Đường dẫn đến hình ảnh lưu trong cơ sở dữ liệu
-            //     $pro->image = 'images/' . $filename;
-            // }
-            $fieldName = 'image';
-            if ($request->hasFile($fieldName)) {
-                $get_img = $request->file($fieldName);
-                $path = 'storage/product/';
-                $new_name_img = $request->name.$get_img->getClientOriginalName();
-                $get_img->move($path,$new_name_img);
-                $pro->image = $path.$new_name_img;
+                // Đường dẫn đến hình ảnh lưu trong cơ sở dữ liệu
+                $pro->image = 'images/' . $filename;
             }
+            // $fieldName = 'image';
+            // if ($request->hasFile($fieldName)) {
+            //     $get_img = $request->file($fieldName);
+            //     $path = 'storage/product/';
+            //     $new_name_img = $request->name.$get_img->getClientOriginalName();
+            //     $get_img->move($path,$new_name_img);
+            //     $pro->image = $path.$new_name_img;
+            // }
             $pro->save();
         $request->session()->flash('successMessage', 'Create success');
 
@@ -106,7 +106,7 @@ class ProductController extends Controller
     {
         $product = Product::find($id);
         $categories = Category::get();
-        return view('admin/products/edit', compact('product', 'categories')) . $id;
+        return view('admin.products.edit', compact('product', 'categories')) . $id;
     }
 
     /**

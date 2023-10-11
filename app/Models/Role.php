@@ -14,8 +14,8 @@ class Role extends Model
         'group_name'
     ];
     public $timestamp = true;
-    public function product()
+    public function group()
     {
-        return $this->hasMany(Product::class, 'group_id', 'id');
+        return $this->belongsToMany(Group::class);
     }
 }

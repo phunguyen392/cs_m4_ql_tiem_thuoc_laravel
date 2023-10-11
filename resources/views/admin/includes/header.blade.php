@@ -6,6 +6,12 @@
           </ol>
           <h6 class="font-weight-bolder mb-0"></h6>
         </nav>
+        <li class="nav-item dropdown">
+          <select class=" changeLang">
+              <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
+              <option value="vi" {{ session()->get('locale') == 'vi' ? 'selected' : '' }}>VI</option>
+          </select>
+      </li>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">
           <div class="ms-md-auto pe-md-3 d-flex align-items-center">
             <div class="input-group input-group-outline">
@@ -108,9 +114,9 @@
               </ul>
             </li>
             <li class="nav-item d-flex align-items-center">
-              <a href="../pages/sign-in.html" class="nav-link text-body font-weight-bold px-0">
+              <a href="{{ route('logout') }}" class="nav-link text-body font-weight-bold px-0">
                 <i class="fa fa-user me-sm-1"></i>
-                <span class="d-sm-inline d-none">Sign In</span>
+                <span class="d-sm-inline d-none">Logout</span>
               </a>
             </li>
           </ul>

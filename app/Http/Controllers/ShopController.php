@@ -63,7 +63,7 @@ class ShopController extends Controller
         ];
         if (Auth::guard('customers')->attempt($arr)) {
             // dd(1);
-            return redirect()->route('categories.index');
+            return redirect()->route('cart');
         } else {
             // return redirect()->route('user.login');
             return redirect('user/login')->with('error', 'Đăng nhập thất bại, tk or mk k đúng');
@@ -239,6 +239,7 @@ class ShopController extends Controller
             $customer->address = $request->address;
             $customer->email = $request->email;
             $customer->phone = $request->phone;
+            $customer->password = bcrypt($request->password);
 
             if (isset($request->note)) {
                 $customer->note = $request->note;
@@ -250,6 +251,8 @@ class ShopController extends Controller
             $order->date_at = date('Y-m-d H:i:s');
             $order->date_ship = date('Y-m-d H:i:s');
             $order->note = 'dsadasdas';
+            $order->total = '12';
+
             
 
 
@@ -282,7 +285,7 @@ class ShopController extends Controller
 
         // dd($request);
         // alert()->success('Thêm Đơn Đặt: '.$request->name,'Thành Công');
-        return redirect()->route('shop.index')->with($notification);;
+        return redirect()->route('user.home')->with($notification);;
         // }
         // } catch (\Exception $e) {
         //     // dd($request);

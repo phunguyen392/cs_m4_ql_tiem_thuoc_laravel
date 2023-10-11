@@ -14,8 +14,7 @@ class Order extends Model
         'date_at',
         'date_ship',
         'note',
-        'total',
-        'status'
+        'total'
     ];
     public $timestamp = true;
     public function customer()

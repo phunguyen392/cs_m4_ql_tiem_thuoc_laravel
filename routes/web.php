@@ -4,8 +4,14 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
+use App\Http\Controllers\Controller;
+use App\Http\Controllers\GroupController;
+use App\Http\Controllers\UserController;
+
+
 use App\Models\Customer;
 use App\Models\Category;
 use App\Models\Product;
@@ -24,39 +30,51 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 
-Route::get('/h', function () {
-    return view('user.master');
-});
+Route::get('/admin/login', [AuthController::class, 'login'])->name('login');
+Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('postlogin');
 //thung rac
-Route::put('categories/softdeletes/{id}', [CategoryController::class, 'softdeletes'])->name('categories.softdeletes');
-Route::put('products/softdeletes/{id}', [ProductController::class, 'softdeletes'])->name('products.softdeletes');
+Route::prefix('/')->middleware(['auth', 'preventBackHistory'])->group(function () {
 
-// Route::get('/viewtrash', [CategoryController::class, 'viewtrash'])->name('viewtrash');
-//cate
-Route::get('categories/trash', [CategoryController::class, 'trash'])->name('categories.trash');
-Route::put('categories/restoredelete/{id}', [CategoryController::class, 'restoredelete'])->name('categories.restoredelete');
-Route::get('categories/destroy/{id}', [CategoryController::class, 'destroy'])->name('category_destroy');
+    // Route::get('/viewtrash', [CategoryController::class, 'viewtrash'])->name('viewtrash');
+    Route::put('categories/softdeletes/{id}', [CategoryController::class, 'softdeletes'])->name('categories.softdeletes');
+    //cate
+    Route::get('categories/trash', [CategoryController::class, 'trash'])->name('categories.trash');
+    Route::put('categories/restoredelete/{id}', [CategoryController::class, 'restoredelete'])->name('categories.restoredelete');
+    Route::get('categories/destroy/{id}', [CategoryController::class, 'destroy'])->name('category_destroy');
+
+    Route::resource('categories', CategoryController::class);
+    Route::put('products/softdeletes/{id}', [ProductController::class, 'softdeletes'])->name('products.softdeletes');
+
 //pro
 Route::get('products/trash', [ProductController::class, 'trash'])->name('products.trash');
 Route::put('products/restoredelete/{id}', [ProductController::class, 'restoredelete'])->name('products.restoredelete');
 Route::get('products/destroy/{id}', [ProductController::class, 'destroy'])->name('product_destroy');
+Route::resource('products', ProductController::class);
+
+//groups
+Route::resource('groups',GroupController::class);
+Route::get('groups/detail/{id}', [GroupController::class,'detail'])->name('groups.detail');
+Route::put('groups/group_details/{id}', [GroupController::class,'group_detail'])->name('groups.group_details');
+
+});
+//User
+Route::resource('users', UserController::class);
+Route::put('updatepass/{id}', [UserController::class, 'updatepass'])->name('users.updatepass');
+
+Route::get('lang/languge', [CategoryController::class, 'change'])->name('changeLang');
 
 
 
-//category
-// Route::middleware(['login_md'])->group(function () {
 
 
-    Route::resource('categories', CategoryController::class);
-    //product
-    Route::resource('products', ProductController::class);
+//product
 // });
 //login
-Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
-Route::post('/login', [AuthController::class, 'login']);
-Route::get('/welcome', [AuthController::class, 'welcome']);
+// Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+// Route::post('/login', [AuthController::class, 'login']);
+// Route::get('/welcome', [AuthController::class, 'welcome']);
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
-Route::get('/regenerate', [AuthController::class, 'regenerateSession']);
+// Route::get('/regenerate', [AuthController::class, 'regenerateSession']);
 
 //user
 Route::get('user/register', [ShopController::class, 'register'])->name('user.register');
@@ -78,5 +96,13 @@ Route::get('checkout', [ShopController::class, 'checkout'])->name('checkout');
 Route::get('/c', function () {
     return view('user.checkout1');
 });
+Route::get('/c', function () {
+    return view('admin.login1');
+});
 //order
 Route::post('/order', [ShopController::class, 'order'])->name('order');
+Route::get('orders/index', [OrderController::class, 'index'])->name('orders.index');
+Route::get('/detail/{id}', [OrderController::class, 'detail'])->name('orders.detail');
+Route::get('/export', [OrderController::class, 'exportOrder'])->name('export');
+
+

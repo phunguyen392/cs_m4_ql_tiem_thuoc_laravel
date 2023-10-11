@@ -1,59 +1,73 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Session;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+
+
+
+
+
 
 class AuthController extends Controller
 {
-public function showLoginForm(){
-    if (Session::has('email')) {
-        // khi o trang product khong quay lai login duoc 
-        return redirect('categories');
-
+    public function showLoginForm()
+    {
+        if (Session::has('email')) {
+            // khi o trang product khong quay lai login duoc 
+            return redirect('categories');
+        }
+        return view('admin.login');
     }
-    return view('admin.login');
-}
-public function login(Request $request)
-{
-    $email = $request->input('email');
-    $password = $request->input('password');
-
-    $user = User::where('email', $email)->first();
-
-    if ($user && password_verify($password, $user->password)) {
-        // Đăng nhập thành công, lưu thông tin người dùng vào Session
-        Session::put('user_id', $user->id);
-        Session::put('user_name', $user->name);
-
-        return redirect('/categories'); // Chuyển hướng tới trang dashboard sau khi đăng nhập thành công
-    } else {
-        // Đăng nhập thất bại, xử lý lỗi đăng nhập
-        return redirect('/login')->with('error', 'Đăng nhập thất bại');
+    public function login(Request $request)
+    {
+        if (Auth::check()) {
+            return redirect()->back();
+        } else {
+            return view('admin.login');
+        }
     }
-}
-public function welcome()
-{
-    if(session::exists('user')){
-        return view('welcome');
+    public function postLogin(Request $request)
+    {
+        $messages = [
+            "email.exists" => "Email không đúng",
+            "password.exists" => "Mật khẩu không đúng",
+        ];
+        $validator = Validator::make($request->all(), [
+            'email' => 'exists:users,email',
+            'password' => 'exists:users,password',
+        ], $messages);
+        $data = $request->only('email', 'password');
+        if (Auth::attempt($data)) {
+            return redirect()->route('categories.index');
+            // dd(1);
+        } else {
+            return back()->withErrors($validator)->withInput();
+        }
     }
-    else{
-        return view('login');
+    public function welcome()
+    {
+        if (session::exists('user')) {
+            return view('welcome');
+        } else {
+            return view('login');
+        }
     }
-}
-public function logout()
-{
-    // Xóa thông tin đăng nhập khỏi Session
-    Session::forget('user');
-    return redirect('/login');
-}
-public function regenerateSession()
-{
-    // Tạo lại ID của phiên
-    Session::regenerate();
-    return redirect('/welcome');
-}
-
+    public function logout()
+    {
+        Auth::logout();
+        return redirect()->route('login');
+    }
+    public function regenerateSession()
+    {
+        // Tạo lại ID của phiên
+        Session::regenerate();      
+        return redirect('/welcome');
+    }
+ 
 }
