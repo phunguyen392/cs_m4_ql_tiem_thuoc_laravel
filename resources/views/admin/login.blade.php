@@ -1,12 +1,26 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
-    <title>Đăng nhập</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css">
+    <title>Document</title>
 </head>
+
 <body>
+
+
+
+
+
     @if(session('error'))
-    <p>{{ session('error') }}</p>
+    <script>
+        window.onload = function() {
+            alert('{{ session('error') }}');
+        };
+    </script>
 @endif
     <div class="container">
         <div class="row justify-content-center">
@@ -19,11 +33,12 @@
 
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" id="email" name="email" class="form-control" required autofocus>
+                                <input type="email" id="email" name="email" class="form-control" required
+                                    autofocus>
                             </div>
 
                             <div class="form-group">
-                                <label for="password">Mật khẩu</label>
+                                <label for="password">Password</label>
                                 <input type="password" id="password" name="password" class="form-control" required>
                             </div>
 
@@ -48,4 +63,5 @@
         </div>
     </div>
 </body>
+
 </html>
