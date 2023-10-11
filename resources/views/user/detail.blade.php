@@ -110,4 +110,19 @@
         </div>
 
     </div>
+
+<div class="related-products">
+    <h2>Related Products</h2>
+    <ul class="product-list">
+      @foreach ($relatedProducts as $product)
+        <li>
+          <a href="{{ route('products.show', $product->id) }}">
+            <img src="{{ $product->image }}" alt="{{ $product->product_name }}">
+            <h3>{{ $product->product_name }}</h3>
+          </a>
+        </li>
+      @endforeach
+    </ul>
+  </div>
 @endsection
+
