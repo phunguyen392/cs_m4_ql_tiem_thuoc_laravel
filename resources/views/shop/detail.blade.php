@@ -1,4 +1,4 @@
-@extends('user.master')
+@extends('shop.master')
 @section('content')
     <div class="container-fluid pb-5">
         <div class="row px-xl-5">
@@ -6,7 +6,7 @@
                 <div id="product-carousel" class="carousel slide" data-ride="carousel">
                     <div class="carousel-inner bg-light">
                         <div class="carousel-item active">
-                            <img class="w-100 h-100" src="{{ asset('storage/' . $product->image) }}" width="500px"
+                            <img lass="img-fluid w-100 custom-image" src="{{ asset('storage/' . $product->image) }}" width="500px"
                                 height="300px" alt="Image">
                         </div>
                     </div>
@@ -112,17 +112,58 @@
     </div>
 
 <div class="related-products">
-    <h2>Related Products</h2>
-    <ul class="product-list">
-      @foreach ($relatedProducts as $product)
-        <li>
-          <a href="{{ route('products.show', $product->id) }}">
-            <img src="{{ $product->image }}" alt="{{ $product->product_name }}">
-            <h3>{{ $product->product_name }}</h3>
-          </a>
-        </li>
-      @endforeach
-    </ul>
+    <h2 class="text-center">Related Products</h2>
+    <div class="row px-xl-5">
+        @foreach ($relatedProducts as $pro)
+            <div class="col-lg-3 col-md-4 col-sm-6 pb-1">
+                <div class="product-item bg-light mb-4">
+                    <div class="product-img position-relative overflow-hidden">
+                        <img class="img-fluid w-100 custom-image" src="{{ Storage::url($pro->image) }}" alt="">
+                        <div class="product-action">
+                            <a class="btn btn-outline-dark btn-square"
+                                href="{{ route('add.to.cart', ['id' => $pro->id]) }}"><i
+                                    class="fa fa-shopping-cart"></i></a>
+                            <a class="btn btn-outline-dark btn-square" href=""><i class="far fa-heart"></i></a>
+                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-sync-alt"></i></a>
+                            <a class="btn btn-outline-dark btn-square" href=""><i class="fa fa-search"></i></a>
+                        </div>
+                    </div>
+                    <div class="text-center py-4">
+                        <a class="h6 text-decoration-none text-truncate"
+                            href="{{ route('user.detail', ['id' => $pro->id]) }}">{{ $pro->product_name }}</a>
+                        <div class="d-flex align-items-center justify-content-center mt-2">
+                            <h5>{{ $pro->price }} K</h5>
+                            <h6 class="text-muted ml-2"><del>$123.00</del></h6>
+                            <div class="d-flex align-items-center justify-content-center mb-1">
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small class="fa fa-star text-primary mr-1"></small>
+                                <small>({{ $pro->quantity }} )</small>
+                            </div>
+                        </div>
+                        <h5>
+                            @if ($pro->status == 0)
+                                <h5>{{ $pro->status }}</h5>
+                            @endif
+
+                        </h5>
+
+
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
   </div>
+  <style>
+    .custom-image {
+        width: 300px;
+        /* Đặt kích thước chiều rộng mong muốn */
+        height: 200px;
+        /* Đặt kích thước chiều cao mong muốn */
+    }
+</style>
 @endsection
 

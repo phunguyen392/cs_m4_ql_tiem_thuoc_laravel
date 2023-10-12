@@ -17,7 +17,7 @@ body {
 }
 /* Full-width input fields */
 input[type=text], input[type=password] {
-  width: 100%;
+  width: 50%;
   padding: 15px;
   margin: 5px 0 22px 0;
   display: inline-block;
@@ -56,34 +56,45 @@ a {
   background-color: #F1F1F1;
   text-align: center;
 }
+  .form{
+    width: 50%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    border: none;
+    background: #F1F1F1;
+    text-align: center;
+  }
+
 </style>
 </head>
 <body>
-<form action="{{ route('user.checkRegister') }}" method="post">
+<form action="{{ route('user.checkRegister') }}" method="post" >
     @csrf
   <div class="container">
-    <h1>Register</h1>
-    <p>Vui long dien day du tat ca thong tin.</p>
+    <h1>Đăng ký</h1>
+    <p>Vui lòng điền đầy đủ thông tin.</p>
     <hr>
-    <label for="name"><b>Name</b></label>
-    <input type="text" placeholder="Enter Name" name="name" id="name" required>
+    <label for="name"><b>Name:<br></b></label>
+    <input type="text" placeholder="Enter Name" name="name" id="name" required><br>
 
-    <label for="email"><b>Email</b></label>
-    <input type="text" placeholder="Enter Email" name="email" id="email" required>
+    <label for="email"><b>Email:<br></b></label>
+    <input style="width: 50%" type="text" placeholder="Enter Email" name="email" id="email" required><br>
     
-    <label for="email"><b>address</b></label>
-    <input type="text" placeholder="Enter address" name="address"  required>
+    <label for="email"><b>Address:<br></b></label>
+    <input style="width: 50%"  type="text" placeholder="Enter address" name="address"  required><br>
     
-    <label for="email"><b>Phone</b></label>
-    <input type="text" placeholder="Nhập Sdt" name="phone" required>
+    <label for="email"><b>Phone:<br></b></label>
+    <input style="width: 50%" type="text" placeholder="Nhập Sdt" name="phone" required><br>
 
-    <label for="psw"><b>Password</b></label>
-    <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
-    <label for="psw-repeat"><b>Repeat Password</b></label>
-    <input type="password" placeholder="Repeat Password" name="psw_repeat" id="psw-repeat" required>
+    <label for="psw"><b>Password:<br></b></label>
+    <input style="width: 50%" type="password" placeholder="Enter Password" name="psw" id="psw" required><br>
+    <label for="psw-repeat"><b>Repeat Password:<br></b></label>
+    <input style="width: 50%" type="password" placeholder="Repeat Password" name="psw_repeat" id="psw-repeat" required><br>
     <hr>
     <p>By creating an account you agree to our <a href="#">Terms & Privacy</a>.</p>
     <button type="submit" class="registerbtn">Register</button>
+    <a href="{{ route('user.home') }}" class="btn btn-warning">Back</a>
   </div>
   <div class="container signin">
     <p>ban da co tai khoan? <a href="{{ route('user.login') }}">Sign in</a>.</p>

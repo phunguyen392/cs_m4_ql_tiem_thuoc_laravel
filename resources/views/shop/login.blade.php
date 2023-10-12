@@ -14,7 +14,7 @@
                 <h2 class="text-center mb-4">Đăng nhập</h2>
                 <div class="card">
                     <div class="card-body">
-                        <form method="POST" action="{{ route('user.checklogin') }}">
+                        <form method="POST" action="{{ route('shop.checklogin') }}">
                             @csrf
 
                             <div class="form-group">
@@ -35,7 +35,9 @@
                             </div>
 
                             <div class="form-group">
-                                <button type="submit" class="btn btn-primary btn-block">Đăng nhập</button>
+                                <button type="submit" class="btn btn-primary ">Đăng nhập</button>
+                                <a href="{{ route('shop.register') }}"  class="btn btn-info ">Đăng ký</a>
+
                             </div>
 
                             <div class="text-center">

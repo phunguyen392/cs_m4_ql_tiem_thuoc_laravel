@@ -32,6 +32,13 @@ use Illuminate\Support\Facades\Auth;
 
 Route::get('/admin/login', [AuthController::class, 'login'])->name('login');
 Route::post('/postlogin', [AuthController::class, 'postlogin'])->name('postlogin');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
+//user
+Route::get('shop/register', [ShopController::class, 'register'])->name('shop.register');
+Route::post('shop/checkRegister', [ShopController::class, 'checkRegister'])->name('shop.checkRegister');
+Route::get('shop/login', [ShopController::class, 'login'])->name('shop.login');
+Route::post('shop/checklogin', [ShopController::class, 'checklogin'])->name('shop.checklogin');
+Route::get('logout', [ShopController::class, 'logout'])->name('shop.logout');
 //thung rac
 Route::prefix('/')->middleware(['auth', 'preventBackHistory'])->group(function () {
 
@@ -73,17 +80,12 @@ Route::get('lang/languge', [CategoryController::class, 'change'])->name('changeL
 // Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
 // Route::post('/login', [AuthController::class, 'login']);
 // Route::get('/welcome', [AuthController::class, 'welcome']);
-Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // Route::get('/regenerate', [AuthController::class, 'regenerateSession']);
 
-//user
-Route::get('user/register', [ShopController::class, 'register'])->name('user.register');
-Route::post('user/checkRegister', [ShopController::class, 'checkRegister'])->name('user.checkRegister');
-Route::get('user/login', [ShopController::class, 'login'])->name('user.login');
-Route::post('user/checklogin', [ShopController::class, 'checklogin'])->name('user.checklogin');
+
 //details route
-Route::get('/', [ShopController::class, 'home'])->name('user.home');
-Route::get('user/detail/{id}', [ShopController::class, 'detail'])->name('user.detail');
+Route::get('/home', [ShopController::class, 'home'])->name('shop.home');
+Route::get('shop/detail/{id}', [ShopController::class, 'detail'])->name('shop.detail');
 
 //gio hang
 Route::get('cart', [ShopController::class, 'cart'])->name('cart');
