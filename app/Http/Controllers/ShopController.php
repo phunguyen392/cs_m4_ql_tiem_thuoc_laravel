@@ -89,18 +89,12 @@ class ShopController extends Controller
             $products->where('product_name', 'like', '%' . $keyword . '%')
                 ->orwhere('status', 'like', '%' . $keyword . '%');
         }
-<<<<<<< HEAD
     
         $products = $products->where('status',1)->orderby('id','desc')->paginate(4);
      
         return view('user.home',compact('categories','products'));
         
-=======
 
-        $products = $products->where('status', 1)->orderby('id', 'desc')->paginate(8);
-
-        return view('user.home', compact('categories', 'products'));
->>>>>>> ea81c529b302f9a0f58d15a16237539be687077a
     }
 
     public function detail($id)
