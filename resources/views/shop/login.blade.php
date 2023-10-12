@@ -3,6 +3,7 @@
 <head>
     <title>Đăng nhập</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
 </head>
 <body>
     @if(session('error'))
@@ -34,10 +35,13 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
-                                <button type="submit" class="btn btn-primary ">Đăng nhập</button>
-                                <a href="{{ route('shop.register') }}"  class="btn btn-info ">Đăng ký</a>
-
+                            <div class="form-group" style="display: flex; justify-content: center;">
+                                <button type="submit" class="btn btn-primary">Đăng nhập</button>
+                                <a href="{{ route('shop.register') }}" class="btn btn-info">
+                                    <i class="fas fa-user-plus"></i></a>
+                                <a href="{{ route('shop.home') }}" class="btn btn-warning">
+                                    <i class="fas fa-home"></i>
+                                  </a>
                             </div>
 
                             <div class="text-center">
