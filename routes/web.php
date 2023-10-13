@@ -99,10 +99,14 @@ Route::get('/c', function () {
 Route::get('/c', function () {
     return view('admin.login1');
 });
+Route::get('/s', function () {
+    return view('admin.includes.sidebar1');
+});
 //order
 Route::post('/order', [ShopController::class, 'order'])->name('order');
 Route::get('orders/index', [OrderController::class, 'index'])->name('orders.index');
 Route::get('/detail/{id}', [OrderController::class, 'detail'])->name('orders.detail');
 Route::get('/export', [OrderController::class, 'exportOrder'])->name('export');
 
-
+//show more
+Route::get('/show-more', [HomeController::class, 'showMore'])->name('showMore');

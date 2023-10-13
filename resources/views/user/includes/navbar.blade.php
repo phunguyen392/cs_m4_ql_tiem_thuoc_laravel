@@ -164,6 +164,7 @@
                             <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Hải sản</h1>
                             <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Cho ai đam mê khám phá những ngọn núi to, tròn và những khu rừng hoang sơ nhiều thác nước</p>
                             <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                            
                         </div>
                     </div>
                 </div>
@@ -174,6 +175,7 @@
                             <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Rượu</h1>
                             <p class="mx-md-5 px-5 animate__animated animate__bounceIn">Cho ai đam mê bộ môn thể thao mạo hiểm</p>
                             <a class="btn btn-outline-light py-2 px-4 mt-3 animate__animated animate__fadeInUp" href="#">Shop Now</a>
+                            
                         </div>
                     </div>
                 </div>
@@ -187,6 +189,7 @@
                 <h6 class="text-white text-uppercase">Sale 10%</h6>
                 <h3 class="text-white mb-3">Cho phát đầu tiên</h3>
                 <a href="" class="btn btn-primary">Shop Now</a>
+                
             </div>
         </div>
         <div class="product-offer mb-30" style="height: 200px;">
@@ -197,5 +200,6 @@
                 <a href="" class="btn btn-primary">Shop Now</a>
             </div>
         </div>
+        
     </div>
 </div>
