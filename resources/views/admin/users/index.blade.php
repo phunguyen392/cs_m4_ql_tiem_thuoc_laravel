@@ -36,7 +36,6 @@ border-radius:50%;
                             <thead>
                                 <tr>
                                     <th data-breakpoints="xs">Stt</th>
-                                    <th>Avatar</th>
                                     <th>Tên</th>
                                     <th>Phone</th>
                                     <th>Chức vụ</th>
@@ -47,7 +46,6 @@ border-radius:50%;
                                 @foreach ($users as $key => $user)
                                     <tr data-expanded="true" class="item-{{ $user->id }}">
                                         <td>{{  ++$key }}</td>
-                                        <td><a href="{{ route('users.show', $user->id) }}"><img id="avt" src="{{asset('http://localhost/M3/casestudym3/storage/app/public/images/user/' . $user->image)}}" alt=""></a></td>
                                         <td>{{ $user->name }}</td>
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->group->name }}</td>

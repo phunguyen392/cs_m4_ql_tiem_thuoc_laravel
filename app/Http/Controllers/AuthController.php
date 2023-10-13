@@ -57,12 +57,14 @@ class AuthController extends Controller
         } else {
             return view('login');
         }
+        
     }
     public function logout()
     {
         Auth::logout();
         return redirect()->route('login');
     }
+
     public function regenerateSession()
     {
         // Tạo lại ID của phiên

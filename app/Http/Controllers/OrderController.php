@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 use  App\Models\Order;
+use  App\Models\OrderDetail;
+use App\Exports\OrderExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 class OrderController extends Controller
@@ -26,4 +30,7 @@ class OrderController extends Controller
     //    dd($oderDetail);
        return view('admin.orders.detail',compact('oderDetail'));
    }
+   public function exportOrder(){
+      return Excel::download(new OrderExport, 'order.xlsx');
+  }
 }

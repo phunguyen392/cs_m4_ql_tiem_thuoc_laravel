@@ -40,7 +40,7 @@ class GroupController extends Controller
         $group= new Group();
         $group-> name=$request->name;
         $group-> save();
-        return redirect()->route('group.index')->with($notification);
+        return redirect()->route('groups.index')->with($notification);
 
     }
 

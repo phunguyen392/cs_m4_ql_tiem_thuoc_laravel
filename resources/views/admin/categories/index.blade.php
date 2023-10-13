@@ -11,12 +11,7 @@
 
         <title>Category</title>
     </head>
-    <li class="nav-item dropdown">
-        <select class=" changeLang">
-            <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
-            <option value="vi" {{ session()->get('locale') == 'vi' ? 'selected' : '' }}>VI</option>
-        </select>
-    </li>
+ 
     <body>
         <div class="text-end">
             <a href="{{ route('categories.create') }}"><br>

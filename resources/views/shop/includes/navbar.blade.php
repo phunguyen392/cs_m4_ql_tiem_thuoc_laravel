@@ -158,7 +158,7 @@
                     </div>
                 </div>
                 <div class="carousel-item position-relative" style="height: 430px;">
-                    <img class="position-absolute w-100 h-100" src="{{ asset('user/img/hau.jpg') }}" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100" src="{{ asset('shop/img/hau.jpg') }}" style="object-fit: cover;">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 700px;">
                             <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Hải sản</h1>
@@ -169,7 +169,7 @@
                     </div>
                 </div>
                 <div class="carousel-item position-relative active" style="height: 430px;">
-                    <img class="position-absolute w-80 h-80" src="{{ asset('user/img/chivas.jpg') }}" style="object-fit: cover;">
+                    <img class="position-absolute w-80 h-80" src="{{ asset('shop/img/chivas.jpg') }}" style="object-fit: cover;">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 700px;">
                             <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Rượu</h1>
@@ -184,7 +184,7 @@
     </div>
     <div class="col-lg-4">
         <div class="product-offer mb-30" style="height: 200px;">
-            <img class="img-fluid" src="{{ asset('user/img/cua.jpg') }}" alt="">
+            <img class="img-fluid" src="{{ asset('shop/img/cua.jpg') }}" alt="">
             <div class="offer-text">
                 <h6 class="text-white text-uppercase">Sale 10%</h6>
                 <h3 class="text-white mb-3">Cho phát đầu tiên</h3>
@@ -193,7 +193,7 @@
             </div>
         </div>
         <div class="product-offer mb-30" style="height: 200px;">
-            <img class="img-fluid" src="{{ asset('user/img/tomhum.jpg') }}" alt="">
+            <img class="img-fluid" src="{{ asset('shop/img/tomhum.jpg') }}" alt="">
             <div class="offer-text">
                 <h6 class="text-white text-uppercase">Sale 20%</h6>
                 <h3 class="text-white mb-3">Cho thùng thứ ba </h3>

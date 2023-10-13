@@ -1,4 +1,4 @@
-@extends('user.master')
+@extends('shop.master')
 @section('content')
     <div class="container-fluid pt-5 pb-3">
         <h2 class="section-title position-relative text-uppercase mx-xl-5 mb-4"><span
@@ -20,7 +20,7 @@
                         </div>
                         <div class="text-center py-4">
                             <a class="h6 text-decoration-none text-truncate"
-                                href="{{ route('user.detail', ['id' => $pro->id]) }}">{{ $pro->product_name }}</a>
+                                href="{{ route('shop.detail', ['id' => $pro->id]) }}">{{ $pro->product_name }}</a>
                             <div class="d-flex align-items-center justify-content-center mt-2">
                                 <h5>{{ $pro->price }} K</h5>
                                 <h6 class="text-muted ml-2"><del>$123.00</del></h6>
@@ -87,7 +87,7 @@
                     </div>
                 </div>
             </section>
-    </div>
+        </div>
 
         <script>
             // Set the date and time for the countdown
@@ -170,13 +170,15 @@
             width: 300px;
             height: 200px;
         }
+
         .countdown__item {
-        display: inline-block;
-        margin-right: 10px;
-    }
-    .p {
-        display: inline-block;
-        margin-right: 10px;
-    }
+            display: inline-block;
+            margin-right: 10px;
+        }
+
+        .p {
+            display: inline-block;
+            margin-right: 10px;
+        }
     </style>
 @endsection

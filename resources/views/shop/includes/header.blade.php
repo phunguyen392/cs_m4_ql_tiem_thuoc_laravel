@@ -10,16 +10,15 @@
                     <button type="button" class="btn btn-sm btn-light dropdown-toggle" data-toggle="dropdown">My
                         Account</button>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <button class="dropdown-item" type="button"> <a href="{{ route('user.login') }}">Sign in</a></button>
-                        <button class="dropdown-item" type="button"><a href="{{ route('user.register') }}">Sign up</a></button>
+                        <button class="dropdown-item" type="button"> <a href="{{ route('shop.login') }}">Sign in</a></button>
+                        <button class="dropdown-item" type="button"><a href="{{ route('shop.register') }}">Sign up</a></button>
                     </div>
                 </div>
                 <div class="btn-group mx-2">
                     <button type="button" class="btn btn-sm btn-light dropdown-toggle"
-                        data-toggle="dropdown">USD</button>
+                        data-toggle="dropdown">LogOut</button>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <button class="dropdown-item" type="button">EUR</button>
-                        <button class="dropdown-item" type="button">GBP</button>
+                        <a href="{{ route('shop.logout') }}">Logout</a>
                     </div>
                 </div>
                 <div class="btn-group">
@@ -53,7 +52,7 @@
             </a>
         </div>
         <div class="col-lg-4 col-6 text-left">
-            <form action="{{ route('user.home') }}">
+            <form action="{{ route('shop.home') }}">
                 <div class="input-group">
                     <input name="keyword" type="text" class="form-control" placeholder="Search for ">
                     <div class="input-group-append">

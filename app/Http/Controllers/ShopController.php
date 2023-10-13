@@ -10,6 +10,7 @@ use App\Models\Order;
 use App\Models\OrderDetail;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +19,7 @@ class ShopController extends Controller
     public function register()
     {
 
-        return view('user.register');
+        return view('shop.register');
     }
 
 
@@ -43,16 +44,16 @@ class ShopController extends Controller
         if ($request->psw == $request->psw_repeat) {
             $customer->save();
             // dd(1);
-            // return redirect()->route('user.index');
+            return redirect()->route('cart');
         } else {
             // dd(2);
-            // return redirect()->route('user.index')->with($notification);
+            return redirect()->route('cart')->with($notification);
         }
     }
 
     public function login()
     {
-        return view('user.login');
+        return view('shop.login');
     }
 
     public function checklogin(Request $request)
@@ -62,12 +63,16 @@ class ShopController extends Controller
             'password' => $request->password
         ];
         if (Auth::guard('customers')->attempt($arr)) {
-            // dd(1);
             return redirect()->route('cart');
         } else {
+            // dd(1);
             // return redirect()->route('user.login');
-            return redirect('user/login')->with('error', 'Đăng nhập thất bại, tk or mk k đúng');
+            return redirect()->route('shop.login') ->with('error', 'Đăng nhập thất bại, email or password không tồn tại');
         }
+    }
+    public function logout(){
+        Auth::guard('customers')->logout();
+        return redirect()->route('shop.login');
     }
     public function home(Request $request)
     {
@@ -75,12 +80,6 @@ class ShopController extends Controller
         // $products = Product::paginate(4);
 
         $categories = Category::all();
-
-
-
-
-
-
 
         $products = Product::with('category');
 
@@ -91,27 +90,35 @@ class ShopController extends Controller
         }
         $products = $products->where('status',1)->orderby('id','desc')->paginate(4);
      
-        return view('user.home',compact('categories','products'));
-        
+        return view('shop.home',compact('categories','products'));
 
     }
 
     public function detail($id)
     {
         $category = Category::find($id);
+        $categories = Category::get();
         $product = Product::find($id);
-        return view('user.detail', compact('category', 'product'));
+        $products = Product::get();
+
+        // Lấy các sản phẩm có liên quan (ví dụ: cùng danh mục)
+        $relatedProducts = Product::where('category_id', $product->category_id)
+            ->where('id', '<>', $product->id) // Loại bỏ sản phẩm hiện tại
+            ->inRandomOrder() // Sắp xếp ngẫu nhiên
+            ->limit(4) // Giới hạn số lượng sản phẩm hiển thị
+            ->get();
+        return view('shop.detail', compact('categories', 'category', 'product', 'products', 'relatedProducts'));
     }
 
 
 
-    
+
     public function cart()
 
     {
         $products = Product::get();
 
-        return view('user.cart');
+        return view('shop.cart');
     }
 
 
@@ -148,7 +155,7 @@ class ShopController extends Controller
 
                 "product_name" => $product->product_name,
 
-                "quantity" =>1,
+                "quantity" => 1,
 
                 "price" => $product->price,
 
@@ -223,9 +230,10 @@ class ShopController extends Controller
         }
     }
 
-    public function checkout(){
+    public function checkout()
+    {
         $categories = Category::all();
-        return view('user.checkout',compact('categories'));
+        return view('shop.checkout', compact('categories'));
     }
 
     public function order(Request $request)
@@ -246,15 +254,17 @@ class ShopController extends Controller
                 $customer->note = $request->note;
             }
             $customer->save();
+            $totalAll = $request->input('total_all');
 
             $order = new Order();
             $order->customer_id = Auth::guard('customers')->user()->id;
             $order->date_at = date('Y-m-d H:i:s');
             $order->date_ship = date('Y-m-d H:i:s');
-            $order->note = 'dsadasdas';
-            $order->total = '12';
+            $order->note = null;
+           
+            $order->total = null;
+            dd($order);
 
-            
 
 
             $order->save();
@@ -286,7 +296,7 @@ class ShopController extends Controller
 
         // dd($request);
         // alert()->success('Thêm Đơn Đặt: '.$request->name,'Thành Công');
-        return redirect()->route('user.home')->with($notification);;
+        return redirect()->route('shop.home')->with($notification);;
         // }
         // } catch (\Exception $e) {
         //     // dd($request);

@@ -1,4 +1,4 @@
-@extends('user.master')
+@extends('shop.master')
 
 @section('content')
 
@@ -57,7 +57,7 @@
             </tr>
             <tr>
                 <td colspan="5" class="text-right">
-                    <a href="{{ url('/') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue
+                    <a href="{{ route('shop.home') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue
                         Shopping</a>
                   <a href="{{ route('checkout') }}">  <button class="btn btn-success">Checkout</button></a>
                 </td>
