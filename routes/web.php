@@ -8,6 +8,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\UserController;
 
@@ -105,10 +106,13 @@ Route::get('/s', function () {
     return view('admin.includes.sidebar1');
 });
 //order
-Route::post('/order', [ShopController::class, 'order'])->name('order');
+Route::post('/orders', [ShopController::class, 'order'])->name('order');
 Route::get('orders/index', [OrderController::class, 'index'])->name('orders.index');
-Route::get('/detail/{id}', [OrderController::class, 'detail'])->name('orders.detail');
+Route::get('orders/detail/{id}', [OrderController::class, 'detail'])->name('orders.detail');
 Route::get('/export', [OrderController::class, 'exportOrder'])->name('export');
 
 //show more
 Route::get('/show-more', [HomeController::class, 'showMore'])->name('showMore');
+
+//customer
+Route::get('/customers',[CustomerController::class,'index'])->name('customers.index');

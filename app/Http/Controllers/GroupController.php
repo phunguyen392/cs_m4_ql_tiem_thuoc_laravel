@@ -16,9 +16,10 @@ class GroupController extends Controller
     {
         
         $groups = Group::with('user')->paginate(5);
-        $users= User::get();
+        $group = Group::find(1);
+$users = $group->user; // Truy cập danh sách người dùng của nhóm
       
-        return view('admin.groups.index',compact('groups','users'));
+        return view('admin.groups.index',compact('groups','users','group'));
     }
 
     /**

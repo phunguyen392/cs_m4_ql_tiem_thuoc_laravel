@@ -42,7 +42,7 @@
                                     <a href="{{ route('shop.login') }}" class="btn btn-danger">Đăng Nhập</a>
                         @endif
                         @php
-                            $totalAll = 0;
+                            $totalAll = 0;  
                         @endphp
                         <table>
                             <div class="block">

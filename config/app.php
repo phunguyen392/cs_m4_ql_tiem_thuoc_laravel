@@ -84,7 +84,7 @@ return [
     */
 
     'locale' => 'en',
-    'locales' => ['en', 'vi'],
+    // 'locales' => ['en', 'vi'],
     /*
     |--------------------------------------------------------------------------
     | Application Fallback Locale

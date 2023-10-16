@@ -11,16 +11,8 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
 
         <title>Product</title>
-
-
-
     </head>
-    <li class="nav-item dropdown">
-        <select class=" changeLang">
-            <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
-            <option value="vi" {{ session()->get('locale') == 'vi' ? 'selected' : '' }}>VI</option>
-        </select>
-    </li>
+  
     <body>
         <!-- Kiểm tra xem có thông báo thành công hay không và hiển thị SweetAlert2 -->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.4.1/dist/sweetalert2.min.css">
@@ -57,10 +49,11 @@
                 });
             </script>
         @endif
+
         <div class="input-group container text-right">
             <div class="form-outline">
                 <form>
-                    <input name="keyword" type="search" class="form-control" placeholder="search....">
+                    <input name="keyword" type="search" class="form-control" placeholder="{{ __('language.search') }}">
             </div>
             <button id="search-button" type="submit" class="btn btn-primary">
                 <i class="fas fa-search"></i>
@@ -69,22 +62,22 @@
         </div>
         <div class="text-end">
             <a href="{{ route('products.create') }}"><br>
-                <button type="button" class="btn btn-info">New Add</button></a>
+                <button type="button" class="btn btn-info">{{ __('language.new add') }}</button></a>
         </div>
         <div class="container text-center">
             <table class="table align-items-center   table-hover  border-dark">
                 <thead>
                     <tr class="text-center">
-                        <th class="col-md-2 col-sm-6">ID</th>
-                        <th class="col-md-2 col-sm-6">Product Name</th>
-                        <th class="col-md-2 col-sm-6">Category name</th>
-                        <th class="col-md-2 col-sm-6">Quantity</th>
-                        <th class="col-md-2 col-sm-6">Price</th>
+                        <th class="col-md-2 col-sm-6">{{ __('language.tt') }}</th>
+                        <th class="col-md-2 col-sm-6">{{ __('language.product_name') }}</th>
+                        <th class="col-md-2 col-sm-6">{{ __('language.category_name') }}</th>
+                        <th class="col-md-2 col-sm-6">{{ __('language.quantity') }}</th>
+                        <th class="col-md-2 col-sm-6">{{ __('language.price') }}</th>
 
-                        <th class="col-md-2 col-sm-6">Image minh hoa</th>
-                        <th class="col-md-2 col-sm-6">Status</th>
+                        <th class="col-md-2 col-sm-6">{{ __('language.image') }}</th>
+                        <th class="col-md-2 col-sm-6">{{ __('language.status') }}</th>
 
-                        <th class="col-md-2 col-sm-6">Action</th>
+                        <th class="col-md-2 col-sm-6">{{ __('language.action') }}</th>
                     </tr>
                     @foreach ($products as $key => $pro)
                 </thead>
@@ -111,16 +104,16 @@
                                 <form>
 
                                     <a href="{{ route('products.edit', ['product' => $pro->id]) }}"
-                                        class="btn btn-primary">Edit</a>
+                                        class="btn btn-primary">{{ __('language.edit') }}</a>
                                 </form>
 
                                 <form action="{{ route('products.softdeletes', $pro->id) }}" method="POST">
                                     @csrf
                                     @method('PUT')
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <button type="submit" class="btn btn-danger">{{ __('language.delete') }}</button>
                                 </form>
                                 <a href="{{ route('products.show', ['product' => $pro->id]) }}"
-                                    class="btn btn-success">Show</a>
+                                    class="btn btn-success">{{ __('language.show') }}</a>
                             </div>
                         </td>
                     </tr>

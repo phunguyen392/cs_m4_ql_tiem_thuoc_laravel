@@ -31,19 +31,22 @@
     }}'>
                         <thead>
                             <tr>
-                                <th>STT</th>
-                                <th>Tên</th>
+                                <th>{{ __('language.tt') }}</th>
+                                <th>Chức vụ</th>
                                 <th>Người đảm nhận</th>
                                 <th data-breakpoints="xs">Tùy Chỉnh</th>
                             </tr>
                         </thead>
                         <tbody id="myTable">
                             @foreach ($groups as $key => $group)
-                                <tr data-expanded="true" class="item-{{ $group->id }}">
+                                <tr data-expanded="true" class="item-{{ $key }}">
                                     <td>{{ $key + 1 }}</td>
 
                                     <td>{{ $group->name }} </td>
-                                    {{-- <td>Hiện có {{ count($group->users) }} người</td> --}}
+                                    {{-- @dd(1); --}}
+                                    <td>{{ $group->$user->name }} </td>
+
+                                    {{-- <td>Hiện có {{ count($group->users) }}</td> --}}
                                     <td>
                                         <form action="{{ route('groups.destroy', $group->id) }}" method="POST">
                                             @csrf

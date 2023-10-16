@@ -9,12 +9,7 @@
     <title>Document</title>
 </head>
 <body>
-    <li class="nav-item dropdown">
-        <select class=" changeLang">
-            <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
-            <option value="vi" {{ session()->get('locale') == 'vi' ? 'selected' : '' }}>VI</option>
-        </select>
-    </li>
+  
 
 
 

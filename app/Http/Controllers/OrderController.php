@@ -18,17 +18,17 @@ class OrderController extends Controller
    }
    public function detail($id)
    {
-       $oderDetail = DB::table('orders')
+       $oderDetails = DB::table('orders')
        ->join('customers', 'orders.customer_id', '=', 'customers.id')
-       ->join('orderdetail', 'orders.id', '=', 'orderdetail.order_id')
-       ->join('products', 'orderdetail.product_id', '=', 'products.id')
-       ->select('orders.*', 'customers.name as customer_name', 'products.name as product_name', 'products.price as product_price', 'orderdetail.*')
+       ->join('orderdetails', 'orders.id', '=', 'orderdetails.order_id')
+       ->join('products', 'orderdetails.product_id', '=', 'products.id')
+       ->select('orders.*', 'customers.name as customer_name', 'products.product_name as product_name', 'products.price as product_price', 'orderdetails.*')
        ->where('orders.customer_id', '=', $id)
        ->orderBy('orders.date_at', 'DESC')
        ->get();
 
     //    dd($oderDetail);
-       return view('admin.orders.detail',compact('oderDetail'));
+       return view('admin.orders.detail',compact('oderDetails'));
    }
    public function exportOrder(){
       return Excel::download(new OrderExport, 'order.xlsx');

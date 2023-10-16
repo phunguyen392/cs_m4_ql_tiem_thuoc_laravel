@@ -22,7 +22,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">table_view</i>
             </div>
-            <span class="nav-link-text ms-1">Category</span>
+            <span class="nav-link-text ms-1">{{ __('language.category') }}</span>
           </a>
         </li>
         <li class="nav-item">
@@ -30,7 +30,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">receipt_long</i>
             </div>
-            <span class="nav-link-text ms-1">Product</span>
+            <span class="nav-link-text ms-1">{{ __('language.product') }}</span>
           </a>
         </li>
         <li class="nav-item">
@@ -38,7 +38,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">view_in_ar</i>
             </div>
-            <span class="nav-link-text ms-1">User</span>
+            <span class="nav-link-text ms-1">{{ __('language.user') }}</span>
           </a>
         </li>
         <li class="nav-item">
@@ -46,7 +46,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
             </div>
-            <span class="nav-link-text ms-1">Order</span>
+            <span class="nav-link-text ms-1">{{ __('language.order') }}</span>
           </a>
         </li>
         <li class="nav-item">
@@ -54,7 +54,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">notifications</i>
             </div>
-            <span class="nav-link-text ms-1">Order Detail</span>
+            <span class="nav-link-text ms-1">{{ __('language.order_detail') }}</span>
           </a>
         </li>
         <li class="nav-item">
@@ -62,11 +62,11 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">format_textdirection_r_to_l</i>
             </div>
-            <span class="nav-link-text ms-1">Group</span>
+            <span class="nav-link-text ms-1">{{ __('language.group') }}</span>
           </a>
         </li>
         <li class="nav-item mt-3">
-          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">Account pages</h6>
+          <h6 class="ps-4 ms-2 text-uppercase text-xs text-white font-weight-bolder opacity-8">{{ __('language.acc') }}</h6>
         </li>
         <li class="nav-item">
           <a class="nav-link text-white " href="../pages/profile.html">
@@ -81,7 +81,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">login</i>
             </div>
-            <span class="nav-link-text ms-1">Sign In</span>
+            <span class="nav-link-text ms-1">{{ __('language.sign') }}</span>
           </a>
         </li>
         <li class="nav-item">
@@ -89,7 +89,7 @@
             <div class="text-white text-center me-2 d-flex align-items-center justify-content-center">
               <i class="material-icons opacity-10">assignment</i>
             </div>
-            <span class="nav-link-text ms-1">Sign Up</span>
+            <span class="nav-link-text ms-1">{{ __('language.sign up') }}</span>
           </a>
         </li>
       </ul>

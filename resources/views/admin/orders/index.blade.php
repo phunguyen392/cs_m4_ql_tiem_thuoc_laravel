@@ -1,4 +1,4 @@
-@extends('user.master')
+@extends('shop.master')
 @section('content')
     <h1 class="offset-4">Đơn hàng</h1>
     <hr>
@@ -28,8 +28,7 @@
                     {{-- <td>{{ $order->date_at }}</td> --}}
 
                     <td>
-                        <a class='btn btn-info' href="{{ route('orders.detail', $order->id) }}">Chi tiết</a>
-                    </td>
+                        <a class='btn btn-info' href="{{ route('orders.detail', ['id'=> $order->id]) }}">Chi tiết</a>                    </td>
                 </tr>
             @endforeach
         </tbody>

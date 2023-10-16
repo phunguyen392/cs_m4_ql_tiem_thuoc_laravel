@@ -263,7 +263,7 @@ class ShopController extends Controller
             $order->note = null;
            
             $order->total = null;
-            dd($order);
+            // dd($order);
 
 
 

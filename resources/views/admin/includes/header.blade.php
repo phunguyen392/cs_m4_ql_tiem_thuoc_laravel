@@ -10,6 +10,8 @@
           <select class=" changeLang">
               <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
               <option value="vi" {{ session()->get('locale') == 'vi' ? 'selected' : '' }}>VI</option>
+              <option value="jp" {{ session()->get('locale') == 'jp' ? 'selected' : '' }}>JP</option>
+
           </select>
       </li>
         <div class="collapse navbar-collapse mt-sm-0 mt-2 me-md-0 me-sm-4" id="navbar">

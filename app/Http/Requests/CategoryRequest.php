@@ -34,8 +34,8 @@ class CategoryRequest extends FormRequest
     public function messages()
     {
         return [
-            'category_name.required'=>'hay nhap ten danh muc',
-            'category_name.unique' => 'Tên danh muc nay da co roi ',
+            'category_name.required'=>'Bạn chưa nhập tên danh mục kìa?',
+            'category_name.unique' => 'Tên danh mục đã trùng?',
 
         ];
     }

@@ -1,4 +1,4 @@
-@extends('user.master')
+@extends('shop.master')
 @section('content')
 <div class="pagetitle">
     <h1>Chi tiết đơn hàng</h1>
@@ -14,7 +14,7 @@
     </thead>
     <tbody>
         @php $total = 0 @endphp
-        @foreach ($orderDtails as $key => $item)
+        @foreach ($oderDetails as $key => $item)
         @php $total += $item->total @endphp
             <tr>
                 <th scope="row">{{ ++$key }}</th>
