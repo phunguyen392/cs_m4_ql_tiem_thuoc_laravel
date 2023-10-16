@@ -108,7 +108,7 @@ Route::get('/s', function () {
 //order
 Route::post('/orders', [ShopController::class, 'order'])->name('order');
 Route::get('orders/index', [OrderController::class, 'index'])->name('orders.index');
-Route::get('orders/detail/{id}', [OrderController::class, 'detail'])->name('orders.detail');
+Route::get('/detail/{id}', [OrderController::class, 'detail'])->name('orders.detail');
 Route::get('/export', [OrderController::class, 'exportOrder'])->name('export');
 
 //show more

@@ -9,12 +9,10 @@
 
                 </header>
                 <hr>
-                <div class="panel-heading">
-                    <h2 class="offset-4">Employee Groups List</h2>
-                </div>
+              
                 <nav aria-label="breadcrumb">
                     @if (Auth::user()->hasPermission('Group_create'))
-                     <a href="{{ route('groups.create') }}" class="btn btn-success">Create an employee groups </a>
+                     <a href="{{ route('groups.create') }}" class="btn btn-success">{{ __('language.new add') }}</a>
                     @endif
                 </nav>
                 <div>
@@ -29,22 +27,28 @@
     "sorting": {
       "enabled": true
     }}'>
+    <div class="card">
+        <div class="card-body">
+            <div class="panel-heading">
+                <h2 class="offset-4">{{ __('language.mem') }}</h2>
+            </div>
+            <table class="table">
                         <thead>
-                            <tr>
+                            <tr class="text-center">
                                 <th>{{ __('language.tt') }}</th>
-                                <th>Chức vụ</th>
-                                <th>Người đảm nhận</th>
-                                <th data-breakpoints="xs">Tùy Chỉnh</th>
+                                <th>{{ __('language.po') }}</th>
+                                {{-- <th>Người đảm nhận</th> --}}
+                                <th data-breakpoints="xs">{{ __('language.action') }}</th>
                             </tr>
                         </thead>
                         <tbody id="myTable">
                             @foreach ($groups as $key => $group)
-                                <tr data-expanded="true" class="item-{{ $key }}">
+                                <tr class="text-center" data-expanded="true" class="item-{{ $key }}">
                                     <td>{{ $key + 1 }}</td>
 
                                     <td>{{ $group->name }} </td>
                                     {{-- @dd(1); --}}
-                                    <td>{{ $group->$user->name }} </td>
+                                    {{-- <td>{{ $group->$user->name }} </td> --}}
 
                                     {{-- <td>Hiện có {{ count($group->users) }}</td> --}}
                                     <td>
@@ -52,15 +56,15 @@
                                             @csrf
                                             @method('PUT')
                                             @if (Auth::user()->hasPermission('Group_update'))
-                                            <a class="btn btn-primary " href="{{route('groups.detail', $group->id)}}">Trao Quyền</a>
+                                            <a class="btn btn-primary " href="{{route('groups.detail', $group->id)}}">{{ __('language.au') }}</a>
                                             @endif
                                             @if (Auth::user()->hasPermission('Group_update'))
                                             <a href="{{ route('groups.edit', $group->id) }}"
-                                                class="btn btn-warning">Sửa</a>
+                                                class="btn btn-warning">{{ __('language.edit') }}</a>
                                             @endif
                                                 @if (Auth::user()->hasPermission('Group_forceDelete'))
                                                 <a data-href="{{ route('groups.destroy', $group->id) }}"
-                                                    id="{{ $group->id }}" class="btn btn-danger sm deleteIcon">Xóa</a>
+                                                    id="{{ $group->id }}" class="btn btn-danger sm deleteIcon">{{ __('language.delete') }}</a>
                                                 @endif
                                         </form>
                                     </td>

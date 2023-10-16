@@ -8,6 +8,8 @@ return[
     'delete' => 'Xóa',
     'show' => 'Xem',
     'tt'=>'Số thứ tự',
+    'back'=> 'Quay lại',
+    'trash'=>'Thùng rác',
     
     'product'=>'Sản phẩm',
     'product_name'=>'Tên sản phẩm',
@@ -26,5 +28,17 @@ return[
     'sign'=> 'Đăng nhập',
     'sign up'=>'Đăng ký',
     'acc'=>'Trang tài khoản',
+    'tc' => 'Trang chủ',
 
+    'name'=>'Tên',
+    'address'=>'Địa chỉ',
+    'email'=>'Email',
+    'phone'=>'Số điện thoại',
+
+    'po'=>'Chức vụ',
+    'mem'=>'DANH SÁCH THÀNH VIÊN',
+    'au'=>'Trao quyền',
+
+
+    'up'=>'Cập nhật bản nâng cao'
 ];

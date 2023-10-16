@@ -21,13 +21,16 @@
                         <a href="{{ route('shop.logout') }}">Logout</a>
                     </div>
                 </div>
-                <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-light dropdown-toggle"
-                        data-toggle="dropdown">EN</button>
-                    <div class="dropdown-menu dropdown-menu-right">
-                        <button class="dropdown-item" type="button">USD</button>
-                        <button class="dropdown-item" type="button">VIE</button>
-                    </div>
+              
+                <div class="select-group">
+                    
+                            <select class=" changeLang">
+                                <option value="en" {{ session()->get('locale') == 'en' ? 'selected' : '' }}>EN</option>
+                                <option value="vi" {{ session()->get('locale') == 'vi' ? 'selected' : '' }}>VI</option>
+                                <option value="jp" {{ session()->get('locale') == 'jp' ? 'selected' : '' }}>JP</option>
+                  
+                            </select>
+                        </li>
                 </div>
             </div>
             <div class="d-inline-flex align-items-center d-block d-lg-none">

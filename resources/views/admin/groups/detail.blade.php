@@ -7,16 +7,16 @@
                     <div class="panel-panel-default">
                         <div class="market-updates">
                             <div class="container">
-                                <div class="pagetitle">
-                                    <h1 class="offset-4">Chức Vụ</h1>
-
-                                </div>
+                               
                                 <div class="page-section">
+    
                                     <form method="post" action="{{ route('groups.group_details', $group->id) }}">
                                         @csrf
                                         @method('PUT')
                                         <div class="card">
                                             <div class="card-body">
+                                        <h1 style="color: blue" class=" text-center">{{ __('language.po') }}</h1>
+                                                
                                                 <hr>
                                                 <div class="form-group">
                                                     <label for="tf1">Tên Quyền:</label> {{ $group->name }}
@@ -53,15 +53,19 @@
                                                             @endforeach
                                                         </div>
                                                 </div>
-                                                <div class="form-actions">
-                                                    <button class="btn btn-success" type="submit">Duyệt</button>
-                                                    <a href="{{ route('groups.index') }}" class="btn btn-danger"
-                                                        type="submit">Hủy</a>
-                                                </div>
+
                                             </div>
                                         </div>
                                     </form>
+                                    <div class="form-actions">
+                                        <button class="btn btn-success" type="submit">{{ __('language.au') }}</button>
+                                        <a href="{{ route('groups.index') }}" class="btn btn-danger" type="submit">{{ __('language.back') }}</a>
+                                    </div>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+
                 </main>
                 <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
                 <script>
@@ -70,6 +74,7 @@
                     });
                 </script>
             </section>
+        </div>
         </div>
     </main>
 @endsection

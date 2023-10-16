@@ -17,14 +17,15 @@
             <a href="{{ route('categories.create') }}"><br>
                 <button type="button" class="btn btn-info">{{__('language.new add')}}</button></a>
         </div>
-        <div>
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <div class="text-center">
+            <h1 style="color: blue">{{ __('language.category') }}</h1>
+            <table class="table" id="dataTable" width="100%" cellspacing="0">
                 <thead>
-                    <tr>
+                    <tr >
                         <th>{{__('language.tt')}}</th>
                         
                         <th>{{__('language.category')}}</th>
-                        <th>{{__('language.description')}}</th>
+                        {{-- <th>{{__('language.description')}}</th> --}}
 
                         <th>{{__('language.action')}}</th>
 
@@ -32,12 +33,12 @@
                 </thead>
                 <tbody>
                     @foreach ($categories as $key => $cate)
-                        <tr>
+                        <tr >
                             <td>{{ $key + 1 }}</td>
                             <td>{{ $cate->category_name }}</td>
-                            <td>{!! $cate->description !!}</td>
-                            <td>
-                                <div class="d-flex">
+                            {{-- <td>{!! $cate->description !!}</td> --}}
+                            <td >
+                                <div class="btn-group">
                        
                                     <a href="{{ route('categories.edit', $cate->id) }}" class="btn btn-primary">{{ __('language.edit') }}</a>
                                     <form action="{{ route('categories.softdeletes', $cate->id) }}" method="POST"> @csrf

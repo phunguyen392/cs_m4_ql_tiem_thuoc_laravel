@@ -148,7 +148,7 @@
             </ol>
             <div class="carousel-inner">
                 <div class="carousel-item position-relative" style="height: 430px;">
-                    <img class="position-absolute w-100 h-100" src="{{ asset('user/img/ken.jpg') }}" style="object-fit: cover;">
+                    <img class="position-absolute w-100 h-100" src="{{ asset('shop/img/ken.jpg') }}" style="object-fit: cover;">
                     <div class="carousel-caption d-flex flex-column align-items-center justify-content-center">
                         <div class="p-3" style="max-width: 700px;">
                             <h1 class="display-4 text-white mb-3 animate__animated animate__fadeInDown">Beers</h1>

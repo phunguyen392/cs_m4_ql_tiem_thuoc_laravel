@@ -7,7 +7,9 @@ return[
     'edit'=>'Edit',
     'delete'=>'Delete',
    'show'=>'Show',
+   'back'=>'Back',
    'tt'=>'#',
+   'trash'=>'Recycle Bin',
    
    'product'=>'Product',
    'product_name'=>'Product Name',
@@ -26,5 +28,17 @@ return[
    'sign'=>'Sign In',
    'sign up'=>'Sign Up',
    'acc'=>'Account Pages',
+    'tc'=> 'Home',
+
+    'name'=>'Name',
+    'address'=>'Address',
+    'email'=>'Email',
+    'phone'=>'Phone',
+   
+'po'=>'Position',
+'mem'=>'MEMBERS GROUPS LIST',
+'au'=>'Authorize',
+
+'up'=>'Upgrade to pro',
 
 ];

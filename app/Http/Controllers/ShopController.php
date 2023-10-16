@@ -88,7 +88,7 @@ class ShopController extends Controller
             $products->where('product_name', 'like', '%' . $keyword . '%')
                 ->orwhere('status', 'like', '%' . $keyword . '%');
         }
-        $products = $products->where('status',1)->orderby('id','desc')->paginate(4);
+        $products = $products->where('status',1)->orderby('id','desc')->paginate(8);
      
         return view('shop.home',compact('categories','products'));
 
@@ -238,6 +238,7 @@ class ShopController extends Controller
 
     public function order(Request $request)
     {
+        $request->session()->flash('success', 'Đặt hàng thành công!');
         // dd($request->product_id);
         if ($request->product_id == null) {
             return redirect()->back();
@@ -282,6 +283,7 @@ class ShopController extends Controller
                 ->where('id', '=', $orderItem->product_id)
                 ->decrement('quantity', $orderItem->quantity);
         }
+
         $notification = [
             'message' => 'success',
         ];
@@ -319,4 +321,5 @@ class ShopController extends Controller
     
         return response()->json($data);
     }
+
 }

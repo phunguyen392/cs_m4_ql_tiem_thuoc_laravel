@@ -1,5 +1,18 @@
 @extends('shop.master')
 @section('content')
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+      <!-- Nội dung trang thành công -->
+
+   
+
     <table>
         <div class="">
             <div class="row px-xl-10">
@@ -37,8 +50,9 @@
                                     </div>
                                     <button type="submit" class="btn btn-block btn-primary font-weight-bold py-3">Đặt
                                         hàng</button>
+                                  
                                 @else
-                                    <h4>Vui lòng đăng nhập trước khi thanh toán nhé</h4>
+                                    <h4>Vui lòng đăng nhập trước khi thanh toán</h4>
                                     <a href="{{ route('shop.login') }}" class="btn btn-danger">Đăng Nhập</a>
                         @endif
                         @php
@@ -46,7 +60,7 @@
                         @endphp
                         <table>
                             <div class="block">
-                                <h4 class="widget-title">Tóm Tắt</h4>
+                                <h2 class="widget-title text-center">Đơn hàng</h2>
                                 <div class="bg-light p-30 mb-5">
                                     <div class="border-bottom">
                                         @if (session('cart'))
@@ -60,27 +74,24 @@
                                                     <h6 class="mb-3">Sản phẩm</h6>
                                                     <div class="d-flex justify-content-between">
                                                         <p> <input type="hidden" value="{{ $id }}"
-                                                                name="product_id[]">{{ $details['nameVi'] ?? '' }}
+                                                                name="product_id[]">{{ $details['product_name'] ?? '' }}
                                                         </p>
-                                                        </td>
                                                         <input type="hidden" value="{{ $details['quantity'] }}"
-                                                            name="quantity[]">
+                                                        name="quantity[]">
                                                         <input type="hidden" value="{{ $total }}" name="total[]">
 
                                                     </div>
-                                                </div>
-
                                                 <div class="border-bottom pt-3 pb-2">
                                                     <div class="d-flex justify-content-between mb-3">
                                                         <h6>Tổng phụ</h6>
-                                                        <h6>{{ number_format($total) }} Vnd </h6>
+                                                        <h6>{{ number_format($total) }} K </h6>
                                                     </div>
 
                                                 </div>
                                                 <div class="pt-2">
                                                     <div class="d-flex justify-content-between mt-2">
                                                         <h5>Tổng tiền</h5>
-                                                        <h5>{{ number_format($total) }} Vnd </h5>
+                                                        <h5>{{ number_format($total) }} K </h5>
                                                     </div>
                                                 </div>
                                     </div>
@@ -89,7 +100,7 @@
                                         @endif
                                         <div class="pt-2">
                                             <div class="d-flex justify-content-between mt-2">
-                                                <h5>Số tiền cần trả : {{ number_format($totalAll) }} Vnd </h5>
+                                                <h5>Số tiền cần trả : {{ number_format($totalAll) }} K </h5>
                                             </div>
                                         </div>
                                     </div>
@@ -98,6 +109,11 @@
                         </table>
 
                     </form>
+                    @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                 </div>
             </div>
         </div>
@@ -107,4 +123,6 @@
     <a href="{{ route('shop.home') }}" class="btn btn-warning"><i class="fa fa-angle-left"></i> Continue
         Shopping</a>
     </td>
+</body>
+</html>
 @endsection
