@@ -83,7 +83,12 @@ $users = $group->user; // Truy cập danh sách người dùng của nhóm
      */
     public function destroy(string $id)
     {
-      
+      $group = Group::destroy($id);
+      $notification = [
+        'message' => 'Xóa Thành Công!',
+          'alert-type' => 'error'
+      ];
+      return redirect()->route('groups.index')->with($notification);
     }
 
     public function detail($id)
