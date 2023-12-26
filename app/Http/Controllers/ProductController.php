@@ -26,18 +26,35 @@ class ProductController extends Controller
              } elseif ($request->session()->has('successMessage2')) {
                  $successMessage = $request->session()->get('successMessage2');
              }
-            //
+            
         $products = Product::with('category');
     
         if ($request->has('keyword')) {
             $keyword = $request->keyword;
             $products->where('product_name', 'like', '%' . $keyword . '%')
-             ->orwhere('status', 'like', '%' . $keyword . '%');
+             ->orWhere('status', 'like', '%' . $keyword . '%');
         }
     
-        $products = $products->orderby('id','desc')->paginate(5);
+        $products = $products->orderBy('id','desc')->paginate(16);
     
         return view('admin.products.index', compact('products','successMessage'));
+
+
+            //api
+        // $data = $products->map(function($product){
+        //     return[
+        //         'id' => $product->id,
+        //         'product_name' => $product->product_name,
+        //         'category_id' => $product->category_id,
+        //         'quantity' => $product->quantity,
+        //         'price' => $product->price,
+        //         'status' => $product->status,
+        //         'description' => $product->description,
+        //         'image' => $product->image,
+
+        //     ];
+        // });
+        // return response()->json($data);
         
     }
 
@@ -56,34 +73,36 @@ class ProductController extends Controller
     public function store(ProductRequest $request)
     {
        
-            $pro = new Product();
-            $pro->product_name = $request->product_name;
-            $pro->category_id = $request->category_id;
-            $pro->quantity = $request->quantity;
-            $pro->price = $request->price;
-            $pro->status = $request->status;
-            $pro->description = $request->description;
+            $product = new Product();
+            $product->product_name = $request->product_name;
+            $product->category_id = $request->category_id;
+            $product->quantity = $request->quantity;
+            $product->price = $request->price;
+            $product->status = $request->status;
+            $product->description = $request->description;
 
 
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $filename = time() . '.' . $image->getClientOriginalExtension();
+            // if ($request->hasFile('image')) {
+            //     $image = $request->file('image');
+            //     $filename = time() . '.' . $image->getClientOriginalExtension();
     
-                // Lưu hình ảnh gốc vào thư mục "storage/images"
-                $image->storeAs('public/images', $filename);
+            //     // Lưu hình ảnh gốc vào thư mục "storage/images"
+            //     $image->storeAs('public/images', $filename);
     
-                // Đường dẫn đến hình ảnh lưu trong cơ sở dữ liệu
-                $pro->image = 'images/' . $filename;
-            }
-            // $fieldName = 'image';
-            // if ($request->hasFile($fieldName)) {
-            //     $get_img = $request->file($fieldName);
-            //     $path = 'storage/product/';
-            //     $new_name_img = $request->name.$get_img->getClientOriginalName();
-            //     $get_img->move($path,$new_name_img);
-            //     $pro->image = $path.$new_name_img;
+            //     // Đường dẫn đến hình ảnh lưu trong cơ sở dữ liệu
+            //     $pro->image = 'images/' . $filename;
             // }
-            $pro->save();
+
+
+            $fieldName = 'image';
+            if ($request->hasFile($fieldName)) {
+                $image = $request->file($fieldName);
+                $path = 'storage/product/';
+                $new_name_img = $request->name.$image->getClientOriginalName();
+                $image->move($path,$new_name_img);
+                $product->image = $path.$new_name_img;
+            }
+            $product->save();
         $request->session()->flash('successMessage', 'Create success');
 
             return redirect()->route('products.index');
@@ -97,8 +116,9 @@ class ProductController extends Controller
     {
         $pro= Product::find($id);
         return view('admin.products.show',compact('pro'));
-    }
 
+    }
+    
     /**
      * Show the form for editing the specified resource.
      */
@@ -120,21 +140,39 @@ class ProductController extends Controller
 
         $product->quantity = $request->quantity;
         $product->price = $request->price;
-        if ($request->hasFile('image')) {
-            // Tải lên hình ảnh mới
-            $image = $request->file('image');
-            $filename = time() . '.' . $image->getClientOriginalExtension();
-            $image->storeAs('public/images', $filename);
 
-            // Cập nhật đường dẫn hình ảnh trong cơ sở dữ liệu
-            $product->image = 'images/' . $filename;
 
-            // Xóa hình ảnh cũ (nếu có)
-            $oldImage = $product->getOriginal('image');
-            if ($oldImage && $oldImage !== $product->image) {
-                Storage::delete('public/' . $oldImage);
+        // if ($request->hasFile('image')) {
+        //     // Tải lên hình ảnh mới
+        //     $image = $request->file('image');
+        //     $filename = time() . '.' . $image->getClientOriginalExtension();
+        //     $image->storeAs('public/images', $filename);
+
+        //     // Cập nhật đường dẫn hình ảnh trong cơ sở dữ liệu
+        //     $product->image = 'images/' . $filename;
+
+        //     // Xóa hình ảnh cũ (nếu có)
+        //     $oldImage = $product->getOriginal('image');
+        //     if ($oldImage && $oldImage !== $product->image) {
+        //         Storage::delete('public/' . $oldImage);
+        //     }
+        // }
+
+
+        $fieldName='image';
+        if ($request->hasFile($fieldName)) {
+            $path = $product->image;
+            if (file_exists($path)) {
+                unlink($path);
             }
+            $path = 'storage/product/';
+            $image = $request->file($fieldName);
+            $new_name_img = rand(1,100).$image->getClientOriginalName();
+            $image->move($path,$new_name_img);
+            $product->image = $path.$new_name_img;
         }
+
+
         $product->status = $request->status;
         $product->description = $request->description;
 

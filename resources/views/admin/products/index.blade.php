@@ -85,20 +85,20 @@
 
                                 <th class="col-md-2 col-sm-6">{{ __('language.action') }}</th>
                             </tr>
-                            @foreach ($products as $key => $pro)
+                            @foreach ($products as $key => $product)
                         </thead>
                         <tbody>
 
                             <tr>
                                 <td>{{ $key + 1 }}</td>
-                                <td>{{ $pro->product_name }}</td>
-                                <td>{{ $pro->category->category_name }}</td>
-                                <td>{{ $pro->quantity }}</td>
-                                <td>{{ $pro->price }}</td>
-                                <td> <img style="width: 90px; height:90px" src="{{ Storage::url($pro->image) }}" alt="chua hien thi" width="100px"></td>
-                                {{-- <td>{{ $pro->discription }}</td> --}}
+                                <td>{{ $product->product_name }}</td>
+                                <td>{{ $product->category->category_name }}</td>
+                                <td>{{ $product->quantity }}</td>
+                                <td>{{ $product->price }}</td>
                                 <td>
-                                    @if ($pro->status == 0)
+                                    <img style="width:100%; height:100%" src="{{ asset($product->image) }}" alt="Hình ảnh">                                {{-- <td>{{ $product->discription }}</td> --}}
+                                <td>
+                                    @if ($product->status == 0)
                                         Hết hàng
                                     @else
                                         Còn hàng
@@ -109,17 +109,17 @@
                                     <div class="d-flex">
                                         <form>
 
-                                            <a href="{{ route('products.edit', ['product' => $pro->id]) }}"
+                                            <a href="{{ route('products.edit', ['product' => $product->id]) }}"
                                                 class="btn btn-primary">{{ __('language.edit') }}</a>
                                         </form>
 
-                                        <form action="{{ route('products.softdeletes', $pro->id) }}" method="POST">
+                                        <form action="{{ route('products.softdeletes', $product->id) }}" method="POST">
                                             @csrf
                                             @method('PUT')
                                             <button type="submit"
                                                 class="btn btn-danger">{{ __('language.delete') }}</button>
                                         </form>
-                                        <a href="{{ route('products.show', ['product' => $pro->id]) }}"
+                                        <a href="{{ route('products.show', ['product' => $product->id]) }}"
                                             class="btn btn-success">{{ __('language.show') }}</a>
                                     </div>
                                 </td>
