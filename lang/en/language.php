@@ -1,6 +1,6 @@
 <?php
 return[
-    'category'=>'Category',
+    'category'=>'Category Table',
     'description'=> 'Description',
     'action' => 'Action',
     'new add' => 'New Add',
@@ -11,7 +11,7 @@ return[
    'tt'=>'#',
    'trash'=>'Recycle Bin',
    
-   'product'=>'Product',
+   'product'=>'Product Table',
    'product_name'=>'Product Name',
    'category_name'=>'Category Name',
    'quantity'=>'Quantity',
@@ -22,7 +22,7 @@ return[
 
    'user'=> 'User',
 
-   'order'=>'Orders',
+   'order'=>'Orders Table',
    'order_detail'=>'Order Details',
    'group'=>'Group',
    'sign'=>'Sign In',

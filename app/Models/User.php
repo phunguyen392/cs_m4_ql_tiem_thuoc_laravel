@@ -22,8 +22,12 @@ class User extends Authenticatable implements CanResetPassword
         'name',
         'email',
         'password',
+        'address',
+        'phone',
+        'gender',
+        'group_id',
     ];
-
+    public $timestamps = false;
     /**
      * The attributes that should be hidden for serialization.
      *

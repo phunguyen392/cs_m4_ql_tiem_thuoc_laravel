@@ -135,34 +135,34 @@ class UserController extends Controller
          return view('admin.users.editpass',compact('user'));
      }
 
-    public function updatepass(UserRequest $request)
-    {
-        if($request->renewpassword==$request->newpassword)
-        {
-            if ((Hash::check($request->password, Auth::user()->password))) {
-                $item=User::find(Auth()->user()->id);
-                $item->password= bcrypt($request->newpassword);
-                $item->save();
-                $notification = [
-                    'message' => 'Đổi mật khẩu thành công!',
-                    'alert-type' => 'success'
-                ];
-                return redirect()->route('users.index')->with($notification);
-            }else{
-                // dd($request);
-                $notification = [
-                    'saipass' => '!',
+    // public function updatepass(UserRequest $request)
+    // {
+    //     if($request->renewpassword==$request->newpassword)
+    //     {
+    //         if ((Hash::check($request->password, Auth::user()->password))) {
+    //             $item=User::find(Auth()->user()->id);
+    //             $item->password= bcrypt($request->newpassword);
+    //             $item->save();
+    //             $notification = [
+    //                 'message' => 'Đổi mật khẩu thành công!',
+    //                 'alert-type' => 'success'
+    //             ];
+    //             return redirect()->route('users.index')->with($notification);
+    //         }else{
+    //             // dd($request);
+    //             $notification = [
+    //                 'saipass' => '!',
 
-                ];
-                return back()->with($notification);
-            }
-        }else{
-            $notification = [
-                'sainhap' => '!',
-            ];
-            return back()->with($notification);
-        }
+    //             ];
+    //             return back()->with($notification);
+    //         }
+    //     }else{
+    //         $notification = [
+    //             'sainhap' => '!',
+    //         ];
+    //         return back()->with($notification);
+    //     }
 
-    }
+    // }
 
 }

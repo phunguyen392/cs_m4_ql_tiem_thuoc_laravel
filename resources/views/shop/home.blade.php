@@ -143,7 +143,10 @@
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
-
+    <div class="video-container">
+        <!-- Dán URL video từ YouTube vào đây -->
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/MPn6E4za7Os" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
     </body>
 
     </html>
@@ -166,3 +169,5 @@
         }
     </style>
 @endsection
+
+

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use App\Models\Category;
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
@@ -9,50 +10,53 @@ use App\Http\Requests\CategoryRequest;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\App;
+use Illuminate\Database\QueryException;
 
 class CategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $this->authorize('viewAny', Category::class);
-        
-        $categories = Category::orderBy('id', 'desc')->paginate(4);
-        return view('admin/categories/index', compact('categories'));
+        // $this->authorize('viewAny', Category::class);
+        $query = Category::select('*')->orderBy('id', 'DESC');
+        $limit = $request->limit ? $request->limit : 5;
+        $items = $query->paginate($limit);
+        $params = [
+            'items' => $items,
+                 ];
+        return view("admin.categories.index", $params);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
     public function create()
     {
-        $this->authorize('create', Category::class);
+        // $this->authorize('create', Category::class);
 
-        return view('admin/categories/create');
+        return view('admin.categories.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(CategoryRequest $request)
     {
-        $this->authorize('restore', Category::class);
+        // $this->authorize('restore', Category::class);
+        try
+            {
+                $item = new Category();
+                $item->category_name = $request->category_name;
+                $item->description = $request->description;
+                $item->save();
+                return redirect()->route('categories.index')->with('success', __('Thêm thành công'));
+            }
+            catch(QueryException $e)
+            {
+                return redirect()->route('categories.index')->with('error', __('Thêm thất bại'));
 
-        $cate = new Category();
-        $cate->category_name = $request->category_name;
-        $cate->description = $request->description;
-        $cate->save();
-        return redirect()->route('categories.index');
+            }
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
-        $this->authorize('view', Category::class);
+        // $this->authorize('view', Category::class);
         
         $cate = Category::find($id);
         return view('admin.categories.show', compact('cate'));
@@ -63,24 +67,28 @@ class CategoryController extends Controller
      */
     public function edit(string $id)
     {
-        $cate = Category::find($id);
-        // if (Gate::allows('edit-category', $cate)) {
-        return view('admin.categories.edit', compact('cate'));
-        // }
-        // else{
-        //     return redirect()->route('categories.index')->with('error', 'Bạn không có quyền chỉnh sửa bài viết này.');
-        // }
+      try
+        {
+            $item = Category::findOrFail($id);
+            $params = 
+                [   
+                    'item' => $item,
+                ];
+            return view ('admin.categories.edit', $params);
+        }
+        catch(ModelNotfoundException $e)
+            {
+                return redirect()->route()->with('error', __('khong tim thay kq'));
+            }
     }
 
-    /**
-     * Update the specified resource in storage.
-     */
+
     public function update(CategoryRequest $request, string $id)
     {
-        $cate = Category::find($id);
-        $cate->category_name = $request->category_name;
-        $cate->description = $request->description;
-        $cate->save();
+        $item = Category::find($id);
+        $item->category_name = $request->category_name;
+        $item->description = $request->description;
+        $item->save();
         return redirect()->route('categories.index');
     }
 

@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -36,7 +35,6 @@
       @include('admin.includes.footer')
     </div>
   </main>
-
   <!-- Core JS Files -->
   <script src="{{ asset('assets/js/core/popper.min.js') }}"></script>
   <script src="{{ asset('assets/js/core/bootstrap.min.js') }}"></script>
@@ -54,7 +52,6 @@
           window.location.href = url + "?lang="+ $(this).val();
       });
   </script>
-
   <script>
     var win = navigator.platform.indexOf('Win') > -1;
     if (win && document.querySelector('#sidenav-scrollbar')) {
@@ -69,5 +66,4 @@
   <!-- Control Center for Material Dashboard: parallax effects, scripts for the example pages etc -->
   <script src="{{ asset('assets/js/material-dashboard.min.js?v=3.1.0') }}"></script>
 </body>
-
 </html>

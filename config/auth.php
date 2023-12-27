@@ -31,13 +31,18 @@ return [
     |
     */
     'guards' => [
-        'web' => [
+        'web' =>    [
             'driver' => 'session',
             'provider' => 'users',
         ],
-        'customers' => [
+        
+        'customers' =>  [
             'driver' => 'session',
             'provider' => 'customers',
+        ],
+        'users' => [
+            'driver' => 'session',
+            'provider' => 'users',
         ],
     ],
     /*

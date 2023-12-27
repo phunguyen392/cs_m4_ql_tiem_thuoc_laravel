@@ -108,8 +108,13 @@ $users = $group->user; // Truy cập danh sách người dùng của nhóm
             'userRoles' => $userRoles,
             'roles' => $roles,
             'group_names' => $group_names,
+
         ];
-        return view('admin.groups.detail',$params);
+        $notification= [
+            'message' => 'trao quyen thanh cong',
+
+        ];
+        return view('admin.groups.detail',$params)->with($notification);
     }
     public function group_detail(Request $request,$id)
     {

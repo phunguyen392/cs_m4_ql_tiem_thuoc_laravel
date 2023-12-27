@@ -6,13 +6,10 @@ use Illuminate\Support\Facades\Session;
 use App\Models\User;
 
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use App\Http\Requests\LoginValidateRequest;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
-
-
-
-
-
 
 class AuthController extends Controller
 {
@@ -32,22 +29,31 @@ class AuthController extends Controller
             return view('admin.login');
         }
     }
-    public function postLogin(Request $request)
-    {
-        $messages = [
-            "email.exists" => "Email không đúng",
-            "password.exists" => "Mật khẩu không đúng",
+    public function postLogin(LoginValidateRequest $request)
+    {   
+        // $credentials = [
+        //     'email' => $request->email,
+        //     'password' => $request->password,
+        // ];
+        // if (Auth::guard('users')->attempt($credentials))
+        //     {
+
+        //         return redirect()->route('categories.index')->with('success', 'Đăng nhập thành công');
+        //     }
+        // else
+        //     {
+        //         return redirect()->route('login')->with('error', 'Đăng nhập thất bại');
+        //     }
+
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password,
         ];
-        $validator = Validator::make($request->all(), [
-            'email' => 'exists:users,email',
-            'password' => 'exists:users,password',
-        ], $messages);
-        $data = $request->only('email', 'password');
-        if (Auth::attempt($data)) {
-            return redirect()->route('categories.index');
-            // dd(1);
+    
+        if (Auth::attempt($credentials, $request->filled('remember'))) {
+            return redirect()->route('categories.index')->with('success',__('Đăng nhập thành công'));
         } else {
-            return back()->withErrors($validator)->withInput();
+            return redirect()->route('login')->with('error', __('Đăng nhập thất bại'));
         }
     }
     public function welcome()

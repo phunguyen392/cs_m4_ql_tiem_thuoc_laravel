@@ -12,6 +12,9 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\UserController;
 
+use App\Http\Controllers\AjaxController;
+use App\Models\Ajax;
+
 
 use App\Models\Customer;
 use App\Models\Category;
@@ -112,7 +115,10 @@ Route::get('/detail/{id}', [OrderController::class, 'detail'])->name('orders.det
 Route::get('/export', [OrderController::class, 'exportOrder'])->name('export');
 
 //show more
-Route::get('/show-more', [HomeController::class, 'showMore'])->name('showMore');
+// Route::get('/show-more', [HomeController::class, 'showMore'])->name('showMore');
 
 //customer
 Route::get('/customers',[CustomerController::class,'index'])->name('customers.index');
+
+Route::get('/ajax-example', 'AjaxController@index')->name('ajax.example');
+Route::post('/ajax-example', 'AjaxController@store')->name('ajax.store');

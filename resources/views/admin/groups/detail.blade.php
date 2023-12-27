@@ -37,7 +37,7 @@
                                                                         <div
                                                                             class="list-group-item d-flex justify-content-between align-items-center">
                                                                             <span
-                                                                                style="color: rgb(4, 5, 5) ;">{{ __($role['name']) }}</span>
+                                                                                style="color: rgb(203, 25, 203) ;">{{ __($role['name']) }}</span>
                                                                             <!-- .switcher-control -->
                                                                             <label class="form-check form-switch ">
                                                                                 <input type="checkbox"
@@ -56,12 +56,12 @@
 
                                             </div>
                                         </div>
-                                    </form>
                                     <div class="form-actions">
                                         <button class="btn btn-success" type="submit">{{ __('language.au') }}</button>
                                         <a href="{{ route('groups.index') }}" class="btn btn-danger" type="submit">{{ __('language.back') }}</a>
                                     </div>
                                 </div>
+                            </form>
                             </div>
                         </div>
                     </div>
